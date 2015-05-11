@@ -6,7 +6,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/foundation.js"></script>
     <script src="js/foundation.reveal.js"></script>
-    <script src="js/angular.min.js"></script>
+
   </head>
   <body>
     <div class="row">
@@ -42,34 +42,64 @@
       </div>
     </div>
     <div class="row">
-      <div class="small-5 columns" align="center">
-        <input type="submit" id="button1" value="change Profile">
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal3"><input type="submit" id="button1" value="Change Profile" /></a>
+        <div id="myModal3" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <p>Change Profile:</p>
+          <input type="text" placeholder="username" />
+          <input type="text" placeholder="Age" />
+          <input type="text" placeholder="Nationality" />
+          <input type="submit" id="button2" value="Save" />
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal"><input type="submit" id="button1" value="Played" /></a>
+        <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <table id="t01" width=100%>
+            <tr>
+              <th>Played Games</th>   
+            </tr>
+            <tr>
+              <td>Game01</td>
+            </tr>
+            <tr>
+              <td>Game02</td>
+            </tr>
+            <tr>
+              <td>Game03</td>
+            </tr>
+            <tr>
+              <td>Game04</td>
+            </tr>
+          </table>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal2"><input type="submit" id="button1" value="Created" /></a>
+        <div id="myModal2" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <table id="t01" width=100%>
+            <tr>
+              <th>Played Games</th>   
+            </tr>
+            <tr>
+              <td>Game01</td>
+            </tr>
+            <tr>
+              <td>Game02</td>
+            </tr>
+            <tr>
+              <td>Game03</td>
+            </tr>
+            <tr>
+              <td>Game04</td>
+            </tr>
+          </table>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
       </div>
     </div>
-    <br><br>
-    <table id="t01" width=100%>
-      <tr>
-        <th>Played</th>
-        <th>Created</th>    
-      </tr>
-      <tr>
-        <td>Game01</td>
-        <td>Game02</td>
-      </tr>
-      <tr>
-        <td>Game02</td>
-        <td>Game04</td>
-      </tr>
-      <tr>
-        <td>Game03</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Game04</td>
-        <td></td>
-      </tr>
-    </table>
-
     <!--ul class="small-block-grid-3">
       <li>2222</li>
       <li>3333</li>
