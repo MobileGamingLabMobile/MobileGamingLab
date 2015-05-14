@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/mgl.css" />
+    <link rel="stylesheet" href="css/mgl-icons.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/foundation.js"></script>
+    <script src="js/foundation.reveal.js"></script>
+
+  </head>
+  <body>
+    <div class="row">
+      <div class="small-2 columns">
+        <button id="button2">
+          <i class="fi-arrow-left size-36"></i>
+        </button>
+      </div>
+      <div class="small-4 columns" align="center">
+        <input type="submit" id="button1" value="Log Out">
+      </div>
+      <div class="small-4 columns" align="center">
+        <input type="submit" id="button1" value="Delete">
+      </div>
+      <div class="small-2 columns">
+        <form method="get" action="file:///C:/Users/Maximilian/Studium/SS15/MG/Project/gameplay.html">
+          <button id="button2">
+            ?
+          </button>
+        </form>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="small-5 columns" align="center">
+        <i class="fi-torsos size-72"></i>
+      </div>
+      <div class="small-7 columns">
+        Username: <br>
+        Gender: <br>
+        Age: <br>
+        Nationality: <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal3"><input type="submit" id="button1" value="Change Profile" /></a>
+        <div id="myModal3" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <p>Change Profile:</p>
+          <input type="text" placeholder="username" />
+          <input type="text" placeholder="Age" />
+          <input type="text" placeholder="Nationality" />
+          <input type="submit" id="button2" value="Save" />
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal"><input type="submit" id="button1" value="Played" /></a>
+        <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <table id="t01" width=100%>
+            <tr>
+              <th>Played Games</th>   
+            </tr>
+            <tr>
+              <td>Game01</td>
+            </tr>
+            <tr>
+              <td>Game02</td>
+            </tr>
+            <tr>
+              <td>Game03</td>
+            </tr>
+            <tr>
+              <td>Game04</td>
+            </tr>
+          </table>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal2"><input type="submit" id="button1" value="Created" /></a>
+        <div id="myModal2" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <table id="t01" width=100%>
+            <tr>
+              <th>Played Games</th>   
+            </tr>
+            <tr>
+              <td>Game01</td>
+            </tr>
+            <tr>
+              <td>Game02</td>
+            </tr>
+            <tr>
+              <td>Game03</td>
+            </tr>
+            <tr>
+              <td>Game04</td>
+            </tr>
+          </table>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+    </div>
+    <!--ul class="small-block-grid-3">
+      <li>2222</li>
+      <li>3333</li>
+      <li>4444</li>
+    </ul-->
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
