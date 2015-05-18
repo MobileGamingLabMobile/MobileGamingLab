@@ -1,0 +1,59 @@
+[
+    {
+        "ID": 12, 
+        "visible": true,
+        "property":{
+            "name": "Wetter",
+            "type": "global", 
+            "sichtweite": 30,
+            "Schneefall": true
+            }
+    },
+        
+    {
+        "ID": 123,
+        "visible": true, 
+        "property": {
+            "MisterX": true,
+            "type": "player"
+        }
+    },
+
+    {
+        "ID": 123,
+        "visible": true, 
+        "property": {
+            "name": "Score",
+            "Wert": 30,
+            "type": "Gruppe A",
+            "Punkte": 10
+        } 
+    },
+
+    {
+        "ID": 123,
+        "visible": true, 
+        "property": {
+            "playerName": "Jack Sparrow",
+            "type": "player"
+        } 
+    },
+    
+    {
+        "ID": 123, 
+        "visible": true,
+        "property": {
+            "playerIcon": "URL",
+            "type": "player"
+        } 
+    },
+
+    {
+        "ID": 123, 
+        "visible": true,
+        "property": {
+            "playerDescription": "Der Player SpielerXX ist ein Händler aus dem Auetaal",
+            "type":"player"
+        }
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "ID": 1,
+        "name": "Spiel 1",
+        "description": "Dieses Spiel ist cool.",
+        "img": "http://localhost:8383/Project/img/unicorn01.png"
+    },
+    
+    {
+        "ID": 12,
+        "name": "Spiel 2",
+        "description": "Dieses Spiel ist cool.",
+        "img": "http://localhost:8383/Project/img/unicorn01.png"
+    },
+    
+    {
+        "ID": 123,
+        "name": "Spiel 3",
+        "description": "Dieses Spiel ist cool.",
+        "img": "http://localhost:8383/Project/img/unicorn01.png"
+    },
+    
+    {
+        "ID": 1234,
+        "name": "Spiel 4",
+        "description": "Dieses Spiel ist cool.",
+        "img": "http://localhost:8383/Project/img/unicorn01.png"
+    },
+    
+    {
+        "ID": 12345,
+        "name": "Spiel 5",
+        "description": "Dieses Spiel ist cool.",
+        "img": "http://localhost:8383/Project/img/unicorn01.png"
+    },
+    
+    {
+        "ID": 123456,
+        "name": "Spiel 6",
+        "description": "Dieses Spiel ist cool.",
+        "img": "http://localhost:8383/Project/img/unicorn01.png"
+    }
+
+]
