@@ -58,7 +58,7 @@ body {
   font-size: 100%; }
 
 body {
-  background: #1E90FF;
+  background: #FFF;
   color: #222;
   cursor: auto;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
@@ -1449,10 +1449,10 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   font-family: inherit;
   font-size: 16px;
   height: 35px;
-  margin-bottom: 20px;
-  margin-top: 8px;
+  margin-bottom: 2px;
+  margin-top: 2px;
   padding-left: 1%;
-  padding-bottom: 20px;
+  padding-bottom: 2px;
   padding-top: 8px;
   width: 100%;
   -webkit-box-sizing: border-box;
