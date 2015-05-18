@@ -1,0 +1,8 @@
+{
+    "ID": 1234988,
+    "rolle": "Händler",
+    "groups": [
+        "GroupA",
+        "GroupB"
+    ]
+}
