@@ -31,6 +31,10 @@ App.config(function ($routeProvider) {
             templateUrl: 'templates/profile.html',
             controller: 'profileController'
         })
+        
+        .when('/changeProfile', {
+            templateUrl: 'templates/changeProfile.html',
+        })
 
         // route for the contact page
         .when('/signup', {

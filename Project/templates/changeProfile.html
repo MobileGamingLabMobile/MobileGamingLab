@@ -1,0 +1,47 @@
+<div class="wrapper"  ng-controller="profileController as profile">
+    <header>
+	<div class="panel">
+            <div class="row">
+		<div class="small-3 columns">
+                    <a href="#profile" class="button radius tiny expand">zurück</a>
+		</div>
+		<div class="small-6 columns">
+                    <h3>Benutzerangaben ändern</h3>
+		</div>
+		<div class="small-3 columns">
+                    <a href="#profile" class="button radius tiny expand">Profil löschen</a>
+		</div>
+            </div>
+            </br>
+            <!--Benutzerinformationen-->
+            <strong class="hide-for-small-only">
+                <div class="row">
+                    <div class="small-5 columns">
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+                            <input name="Datei" type="file" size="50" accept="image/*" />
+                            <a href="#" class="button radius tiny expand">Hochladen</a>
+                        </form>
+                    </div>
+                    <div class="small-7 columns">
+                        Benutzername: <input type="text" /><br>
+                        Geschlecht: <input type="text" /><br>
+                        Alter: <input type="text" /><br>
+                        Nationalität <input type="text" /><br>
+                    </div>
+                </div>
+            </strong>
+            <strong class="show-for-small-only">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+                    <input name="Datei" type="file" size="50" accept="image/*" />
+                    <a href="#" class="button radius tiny expand">Hochladen</a>
+                </form>
+                Benutzername: <input type="text" /><br>
+                Geschlecht: <input type="text" /><br>
+                Alter: <input type="text" /><br>
+                Nationalität <input type="text" /><br>
+            </strong>
+	</div>
+    </header>
+</div>
