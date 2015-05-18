@@ -6,7 +6,7 @@
                     <a href="#selectGame" class="button radius tiny expand">zurück</a>
 		</div>
 		<div class="small-6 columns">
-                    <h3>Benutzername</h3>
+                    <h3>{{Benutzername}}</h3>
 		</div>
 		<div class="small-3 columns">
                     <a href="#profile" class="button radius tiny expand">Profil löschen</a>
@@ -14,18 +14,29 @@
             </div>
             </br>
             <!--Benutzerinformationen-->
-            <div class="row">
-                <div class="small-5 columns">
-                    <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+            <strong class="hide-for-small-only">
+                <div class="row">
+                    <div class="small-5 columns">
+                        <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+                    </div>
+                    <div class="small-7 columns">
+                        Benutzername: <br>
+                        Geschlecht: <br>
+                        Alter: <br>
+                        Nationalität <br>
+                    </div>
                 </div>
-                <div class="small-7 columns">
-                    Benutzername: <br>
-                    Geschlecht: <br>
-                    Alter: <br>
-                    Nationalität <br>
-                </div>
-            </div>
-            <br>
+            </strong>
+            <strong class="show-for-small-only">
+                <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+                <br>
+                Benutzername: <br>
+                Geschlecht: <br>
+                Alter: <br>
+                Nationalität: <br>
+                <br>
+            </strong>
+            <br><br>
             <div class="row">
                 <div class="center">
                     <a href="#changeProfile" class="button radius tiny expand">Profil bearbeiten</a>
