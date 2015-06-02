@@ -1,4 +1,25 @@
-App.controller('signUpController', function ($scope) {
-    //Just for testing
-    console.log("signup");
+App.controller('signUpController', function ($scope, $http) {
+	
+	$scope.message ="";
+	$scope.error = false;
+	$scope.submit = function(){
+			$http.post("http://giv-mgl.uni-muenster.de:8080/signup",{email: $scope.email , password: $scope.password})
+			.success(function (data) {
+				console.log(data);
+				if (data.success){
+					window.location.href = "#changeProfile";
+				}
+				else{
+					console.log(data.message);
+					$scope.message = data.message;
+					$scope.error = true;
+				};
+				
+			});
+	};
+	
+	$scope.notsame = function(){
+		return ($scope.password !== $scope.password2);
+	};
+	
 });
