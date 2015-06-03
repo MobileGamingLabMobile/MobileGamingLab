@@ -12,29 +12,29 @@ App.config(function ($routeProvider) {
             controller: 'loginController'
         })
 
-        .when('/gameselection', {
+        .when('/gameselection/:token', {
             templateUrl: 'templates/selectgame.html',
             controller: 'selectGameController'
         })
 
-        .when('/gameinfo', {
+        .when('/gameinfo/:token', {
             templateUrl: 'templates/gameinfo.html',
             controller: 'gameInfoController'
         })
 
-        .when('/game', {
+        .when('/game/:token', {
             templateUrl: 'templates/game.html',
             controller: 'gameController'
         })
 
-        .when('/profile', {
+        .when('/profile/:token', {
             templateUrl: 'templates/profile.html',
             controller: 'profileController'
         })
         
-        .when('/changeProfile', {
+        .when('/changeProfile/:token', {
             templateUrl: 'templates/changeProfile.html',
-			controller: 'profileController'
+			controller: 'changeProfileController'
         })
 
         // route for the contact page
