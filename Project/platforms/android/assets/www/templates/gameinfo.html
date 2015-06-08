@@ -1,0 +1,54 @@
+<div class="wrapper"  ng-controller="gameInfoController as gameinfo">
+	
+	<!--header and nav-->
+	<header>
+		<div class="panel">
+			<div class="row">
+				<div class="small-3 columns">
+					<a href="#selectGame" class="button radius tiny expand">zurück</a>
+				</div>
+				<div class="small-6 columns">
+					<h3>Unicorn</h3>
+				</div>
+				<div class="small-3 columns">
+					<a href="#profile" class="button radius tiny expand">Profil</a>
+				</div>
+			</div>
+			<div class="row">
+				<!-- images -->
+				<div class="small-block-grid-1">
+					<img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+				</div>
+			</div>
+			</br>
+			<!--playbutton-->
+			<div class="row">
+				<div class="small-6 small-centered columns ">
+					<a href="#game" class="button radius small expand">spielen</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- main -->
+	<div class="main">
+		<div class="panel">
+			<dl class="sub-nav">
+				<dd ng-class="{ active: gameinfo.isSelected(1)}">
+					<a href="#gameinfo" class="button radius" ng-click="gameinfo.selectTab(1)">Beschreibung</a>
+				</dd>
+				<dd ng-class="{ active: gameinfo.isSelected(2)}">
+					<a href="#gameinfo" class="button radius" ng-click="gameinfo.selectTab(2)">Bewertung</a>
+				</dd>
+			</dl>
+			<div class="panel" ng-show="gameinfo.isSelected(1)">
+				<h4>Beschreibung</h4>
+			</div>
+			<div class="panel" ng-show="gameinfo.isSelected(2)">
+				<h4>Bewertung</h4>
+			</div>
+		</div>
+	</div>
+
+</div>
+

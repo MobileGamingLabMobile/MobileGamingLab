@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="css/mgl.css" />
+    <link rel="stylesheet" href="css/mgl-icons.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/foundation.js"></script>
+    <script src="js/foundation.reveal.js"></script>
+    <script src="js/angular.min.js"></script>
+    <style type="text/css">
+      #map { 
+        height: 65%;
+        width: 100% 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="small-2 columns">
+        <button id="button2">
+          <i class="fi-arrow-left size-36"></i>
+        </button>
+      </div>
+      <div class="small-8 columns" align="center">
+        <a href="file:///C:/Users/Maximilian/Studium/SS15/MG/Project/selectGame.html">
+          <h2>Name des Spiels</h2>
+        </a>
+      </div>
+      <div class="small-2 columns">
+        <a href="file:///C:/Users/Maximilian/Studium/SS15/MG/Project/profile.html"></a>
+          <i class="fi-torsos-all size-48"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-2 columns">
+        <form method="get" action="file:///C:/Users/Maximilian/Studium/SS15/MG/Project/gameplay.html">
+          <button id="button2">
+            ?
+          </button>
+        </form>
+      </div>
+      <div class="small-5 columns" align="center">
+        <p>00:00:00</p>
+        <!--input type="text" name="stopwatch" value="00:00:00" disabled /-->
+      </div>
+      <div class="small-5 columns" align="center">
+        <p>Task 1</p>
+      </div>
+    </div>
+
+    <!--Karte-->
+    <div id="map"></div>
+
+    <div class="row">
+      <div class="small-4 columns">
+        <a href="#" data-reveal-id="myModal"><input type="submit" id="button1" value="Task" /></a>
+        <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2>Task:</h2>
+          <p class="lead">Your couch.  It is mine.</p>
+          <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+      <div class="small-4 columns" align="center">
+        <a href="#" data-reveal-id="myModal2"><input type="submit" id="button1" value="Items" /></a>
+        <div id="myModal2" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2>Items:</h2>
+          <br>
+          <ul class="small-block-grid-3">
+            <li><i class="fi-photo size-72"></i></li>
+            <li><i class="fi-photo size-72"></i></li>
+            <li><i class="fi-photo size-72"></i></li>
+          </ul>
+          <ul class="small-block-grid-3">
+            <li><i class="fi-photo size-72"></i></li>
+            <li><i class="fi-photo size-72"></i></li>
+            <li><i class="fi-photo size-72"></i></li>
+          </ul>
+          <ul class="small-block-grid-3">
+            <li><i class="fi-photo size-72"></i></li>
+            <li><i class="fi-photo size-72"></i></li>
+            <li><i class="fi-photo size-72"></i></li>
+          </ul>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+      <div class="small-4 columns">
+        <a href="#" data-reveal-id="myModal3"><input type="submit" id="button1" value="Options" /></a>
+        <div id="myModal3" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2>Options:</h2>
+          <br>
+          <ul class="small-block-grid-2">
+            <li>
+              <input type="radio" name="f1" /><label for="f1">Fraction 1</label><br>
+              <input type="radio" name="f1" /><label for="f1">Fraction 2</label><br>
+              <input type="radio" name="f1" /><label for="f1">Fraction 3</label>
+            </li>
+            <li>
+              <input type="submit" id="button2" value="Option 1" /></a>
+              <input type="submit" id="button2" value="Option 2" /></a>
+            </li>
+          </ul>
+          <textarea rows="4" placeholder="Was fuer ein Text?"></textarea>
+          <div class="small-4 columns">
+            <input id="checkbox1" type="checkbox"><label for="checkbox1">Sound</label>
+          </div>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+      </div>
+    </div>
+
+    <!--ul class="small-block-grid-3">
+      <li>2222</li>
+      <li>3333</li>
+      <li>4444</li>
+    </ul-->
+
+    <script>
+      var map = L.map('map');
+
+      L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+          '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+          'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'examples.map-i875mjb7'
+      }).addTo(map);
+
+      function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+        L.circle(e.latlng, radius, {
+          color: '#2ba6cb',
+          fillColor: '#2ba6cb',
+          fillOpacity: 0.5
+        }).addTo(map);
+      }
+
+      function onLocationError(e) {
+        map.setView([51.96935, 7.59588], 13);
+        alert(e.message);
+      }
+
+      map.on('locationfound', onLocationFound);
+      map.on('locationerror', map.setView([51.96935, 7.59588], 13), onLocationError);
+
+      map.locate({setView: true, maxZoom: 13});
+                
+      L.marker([51.96935, 7.59588]).addTo(map)
+      .bindPopup("<b>Task 1</b><br />Here you can start a treasure hunt.").openPopup();
+
+      map.on('click', onMapClick);        
+    </script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
