@@ -1,0 +1,59 @@
+<html>
+
+<body>
+<header><b>Test Websocket</b></header>
+<script src="libraries/jquery-1.11.3.min.js"></script>
+<!--<script src="/socket.io/socket.io.js"></script>-->
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+<div id="first"style="width:45%;float:left">
+<div>Write the name of the channel you would like to watch. (GPS,Object)</div>
+<pre style="height:430px;overflow-y: scroll;"id="output1"></pre>
+
+<input id="input1"></input><Button id="button1">Submit</Button>
+</div>
+<div id="second" style="margin-left:50%; witdh:45%;">
+<div>Write the name of the channel you would like to watch. (GPS,Object)</div>
+<pre style="height:430px;overflow-y: scroll;"id="output2"></pre>
+
+<input id="input2"></input><Button id="button2">Submit</Button>
+</second>
+</body>
+<script>
+show1="";
+socket1 = io.connect("giv-mgl.uni-muenster.de:3035");
+//socket1 = io.connect("localhost:8080");
+socket1.emit("addClient",{"clientName":"socket1"});
+$("#button1").on("click",function(){
+show1=$("#input1").val();
+});
+socket1.on("GPS",function(data){
+    if(show1=="GPS"){
+$("#output1").text(JSON.stringify(data,null,"\t")+"socket ID:"+socket1.id);
+    }
+});
+socket1.on("Object",function(data){
+    if(show1=="Object"){
+$("#output1").text(JSON.stringify(data,null,"\t")+"socket ID:"+socket1.id);
+    }
+});
+setTimeout(function(){
+    show2="";
+    socket2 = io.connect({ forceNew: true });
+    socket2.emit("addClient",{"clientName":"socket2"});
+    $("#button2").on("click",function(){
+    show2=$("#input2").val();   	
+    });
+socket2.on("GPS",function(data){
+    if(show2=="GPS"){
+$("#output2").text(JSON.stringify(data,null,"\t")+"socket ID:"+socket2.id);
+    }
+});
+socket2.on("Object",function(data){
+    if(show2=="Object"){
+$("#output2").text(JSON.stringify(data,null,"\t")+"socket ID:"+socket2.id);
+    }
+});  
+},3510);
+</script>
+</html>

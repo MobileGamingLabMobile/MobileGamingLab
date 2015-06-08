@@ -1,0 +1,15 @@
+[
+	"object",
+	{
+	"item.id": "123",
+	"resource.id": "987",
+	"player.id": "abc",
+	"properties.id": "zyx"
+	},
+	{
+	"item.id": "234",
+	"resource.id": "876",
+	"player.id": "def",
+	"properties.id": "wvu"
+	}
+]
