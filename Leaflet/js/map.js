@@ -1,11 +1,11 @@
 function map(){
 
-// View auf MÃ¼nster
+// View auf Münster
     var map = L.map('map').setView([51.96505, 7.6125], 14);
 
 // Map integrieren
     L.tileLayer('http://{s}.tiles.mapbox.com/v3/maxitwel.k5hb29n8/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery Â© <a href="http://mapbox.com">Mapbox</a>',
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             maxZoom: 18
     }).addTo(map);
 
@@ -36,8 +36,8 @@ function map(){
 
     var LeafIcon = L.Icon.extend({
         options: {
-            iconSize:     [40, 40],
-            iconAnchor:   [20, 20],
+            iconSize:     [10, 10],
+            iconAnchor:   [5, 5],
             popupAnchor:  [0, 0]
         }
     });
@@ -193,13 +193,13 @@ L.Control.Gps = L.Control.extend({
 	},
 */
 	showAlert: function(text) {
-            this._alert.style.display = 'block';
-            this._alert.innerHTML = text;
-            var that = this;
-            clearTimeout(this.timerAlert);
-            this.timerAlert = setTimeout(function() {
-		that._alert.style.display = 'none';
-            }, 5);
+		this._alert.style.display = 'block';
+		this._alert.innerHTML = text;
+		var that = this;
+		clearTimeout(this.timerAlert);
+		this.timerAlert = setTimeout(function() {
+			that._alert.style.display = 'none';
+		}, 5);
 	}
 });
 
