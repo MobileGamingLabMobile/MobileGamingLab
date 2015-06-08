@@ -1,0 +1,68 @@
+<div class="wrapper"  ng-controller="selectGameController as gameselect">
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div class="panel">
+			<div class="row">
+
+				<div class="small-3 columns right">
+					<a href="#profile/{{token}}" class="button radius tiny expand">Profil</a>
+				</div>
+			</div>
+
+			<!--playbutton-->
+			<div class="small-6 small-centered columns">
+				<!-- password field. required. -->
+				<input placeholder="Suche" name="suche" type="search">
+			</div>
+
+		<section >
+			<div class="panel">
+				<dl class="sub-nav">
+					<dd ng-class="{ active: gameselect.isSelected(1)}">
+						<a href="#gameselection" class="button radius" ng-click="gameselect.selectTab(1)">Alle Spiele</a>
+					</dd>
+					<dd  ng-class="{ active: gameselect.isSelected(2)}">
+						<a href="#gameselection" class="button radius" ng-click="gameselect.selectTab(2)">Top Spiele</a>
+					</dd>
+					<dd  ng-class="{ active: gameselect.isSelected(3)}">
+						<a href="#gameselection" class="button radius" ng-click="gameselect.selectTab(3)">Suche</a>
+					</dd>
+				</dl>
+				<div class="panel" ng-show="gameselect.isSelected(1)">
+					<i class="fi-photo size-72"></i>
+					<h4>Alle Spiele</h4>
+
+				</div>
+				<div class="panel ng-hide" ng-show="gameselect.isSelected(2)">
+					<i class="fi-photo size-72"></i>				
+					<h4>Top Spiele</h4>
+				</div>
+				<div class="panel ng-hide" ng-show="gameselect.isSelected(3)">
+					<i class="fi-photo size-72"></i>
+					<h4>Suche</h4>
+				</div>
+			</div>
+
+		</section>
+
+		<section class="ng-scope" ng-controller="selectGameController
+									as gameselect">
+			<div class="panel">
+				<dl class="sub-nav">
+					<dd class="active" ng-class="{ active: gameselect.isSelected(1)}">
+						<a href="#gameselection" class="button radius" ng-click="gameselect.selectTab(4)">Vorherige Seite</a>
+					</dd>
+					<dd ng-class="{ active: gameselect.isSelected(2)}">
+						<a href="#gameselection" class="button radius" ng-click="gameselect.selectTab(5)">Nächste Seite</a>
+					</dd>
+				</dl>
+				<div class="panel" ng-show="gameselect.isSelected(1)">
+
+				</div>
+				<div class="panel ng-hide" ng-show="gameselect.isSelected(2)">
+
+				</div>
+			</div>
+
+		</section>
+</div>
+</div>
