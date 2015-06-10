@@ -1,42 +1,44 @@
 <!-- content panel for registration-->
 <div class="panel" ng-controller="signUpController as  ctrSign">
-	<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-		<li>
-			<!-- logo -->
-			<img src="img/unicorn01.png" width="250" height="250" style="margin:0px auto;display:block">
-			<p style="text-align: center;"><font size="20">Mobile Unicorn Gaming Lab</font></p>
-		</li>
-		<li>
-			<form name="signupform" novalidate>
-				<div data-alert class="alert-box alert" ng-show="error" >
-					{{message}}
-				</div>
-				<!-- email field. required. -->
-				<span style="color:red" ng-show="signupform.email.$invalid - email && signupform.email.$dirty">
+    <div class="row">
+        <div class="large-12 large-centered columns">
+            <p style="text-align: center;"><font size="20">Registrierung</font></p>
+        </div>
+    </div>
+    <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2">
+	<li>
+            <!-- logo -->
+            <img src="img/unicorn01.png" width="250" height="250" style="margin:0px auto;display:block">
+            <p style="text-align: center;"><font size="20">Mobile Unicorn Gaming Lab</font></p>
+	</li>
+	<li>
+            <form name="signupform" novalidate>
+		<div data-alert class="alert-box alert" ng-show="error" >
+                    {{message}}
+		</div>
+		<!-- email field. required. -->
+		<span style="color:red" ng-show="signupform.email.$invalid - email && signupform.email.$dirty">
 					Bitte geben Sie eine gültige E-mail Adresse an!
-				</span>
-				<input type="email" id="email" name="email" placeholder="E-mail" ng-model="email" required>
-				<!-- password field. required. -->
-				<span style="color:red" ng-show="(signupform.password.$invalid && signupform.password.$dirty)">
+		</span>
+		<input type="email" id="email" name="email" placeholder="E-mail" ng-model="email" required>
+                    <!-- password field. required. -->
+                <span style="color:red" ng-show="(signupform.password.$invalid && signupform.password.$dirty)">
 					Bitte geben Sie ein gültiges Passwort an!
-				</span>
-				<span style="color:red" ng-show="notsame() && signupform.password2.$dirty && signupform.password.$dirty">
+                </span>
+                <span style="color:red" ng-show="notsame() && signupform.password2.$dirty && signupform.password.$dirty">
 					Die Passwörter stimmen nicht überein!
-				</span>
-				<span style="color:green" ng-hide="signupform.password2.$pristine || signupform.password2.$invalid || notsame()">
+                </span>
+                <span style="color:green" ng-hide="signupform.password2.$pristine || signupform.password2.$invalid || notsame()">
 					Die Passwörter stimmen überein!
-				</span><br>
-				<input type="password" id="password" name="password" placeholder="Password" ng-model="password" required>
+                </span><br>
+		<input type="password" id="password" name="password" placeholder="Password" ng-model="password" required>
 
-				<!-- password field again. required. -->
-				<input type="password" id="password2" name="password2" placeholder="Password Wiederholung" ng-model="password2" required>
-				<!-- Button for register -->
-				<a class="button small" ng-disabled="signupform.$invalid || notsame()" ng-click="submit()">Registrieren</a>
-			</form>
-			<div>signupform is {{signupform.$valid}}</div>
-		</li>
-		<li>
-			<!-- is overlaid by the joyride -->
-		</li>
-	</ul>
+		<!-- password field again. required. -->
+		<input type="password" id="password2" name="password2" placeholder="Password Wiederholung" ng-model="password2" required>
+		<!-- Button for register -->
+		<a class="button small" ng-disabled="signupform.$invalid || notsame()" ng-click="submit()">Registrieren</a>
+            </form>
+            <div>signupform is {{signupform.$valid}}</div>
+	</li>
+    </ul>
 </div>
