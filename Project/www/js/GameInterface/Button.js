@@ -12,6 +12,10 @@ Button.prototype.appendTo = function (ele) {
     this.addEvent();
 };
 
+Button.prototype.css = function (property, value) {
+    this.$button.css(property, value);
+}
+
 Button.prototype.addEvent = function () {
     $('#' + this.id).on('click', function () {
         $('#popup').foundation('reveal', 'open');

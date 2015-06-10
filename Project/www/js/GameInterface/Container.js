@@ -73,22 +73,19 @@ Container.prototype.addButton = function (properties) {
         case('option'):
             $button = new OptionButton(properties);
             $button.appendTo(this.$container);
+            $button.css("width", "33.3%");
             break;
         case('task'):
             $button = new TaskButton(properties);
             $button.appendTo(this.$container);
+            $button.css("width", "33.3%");
             break;
         case('item'):
             $button = new ItemButton(properties);
             $button.appendTo(this.$container);
+            $button.css("width", "33.3%");
             break;
     }
-    /*
-    $button.css("height", "100%");
-    $button.css("width", "100%");
-    $button.css("padding", "none");
-    $button.css("margin", "none");
-    */
 };
 
 Container.prototype.addLabel = function (properties) {
