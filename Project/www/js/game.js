@@ -2,80 +2,67 @@ App.controller("gameController", function () {
   
     var properties = {
         header: {
-            background: 'green',
-            height: 10,
+            gamename: 'Mister X',
+            background: 'white',
+            height: 25,
             elements: {
                 button1: {
                     type: "button",
-                    id: "ThisIsAnFirstId",
-                    text: "FirstName",
+                    subtype: "help",
                     align: "left"
                 },
-                button2: {
-                    type: "button",
-                    id: "ThisIsAnSecondId",
-                    text: "SecondName",
+                label1: {
+                    type: "label",
+                    id: "currentTaskLabel",
+                    text: "Task 1",
                     align: "right"
                 },
-                button3: {
-                    type: "button",
-                    id: "ThisIsAnThirdId",
-                    text: "ThirdName",
+                label2: {
+                    type: "label",
+                    id: "timeLabel",
+                    text: "00:01:02",
                     align: "right"
-                },
-                button4: {
-                    type: "button",
-                    id: "ThisIsAnFourthId",
-                    text: "FourthName",
-                    align: "left"
                 }
             }
         },
         body: {
-            background: "red",
-            height: 60,
-            map: false
+            background: "white",
+            height: 65,
+            map: true
         },
         footer: {
-            background: "blue",
-            height: 30,
-            rows: {
-                row1: {
-                    elements: {
-                        button5: {
-                             type: "button",
-                             id: "ThisIsAnFifthId",
-                             text: "FifthName",
-                             align: "left"
-                         }
-                     }
+            background: "white",
+            height: 10,
+            elements: {
+                button1: {
+                    type: "button",
+                    subtype: "task",
+                    id: "taskButton",
+                    text: "Aufgaben",
+                    align: "left"
                 },
-                row2: {
-                    elements: {
-                        button6: {
-                             type: "button",
-                             id: "ThisIsAnSixthId",
-                             text: "SixthName",
-                             align: "left"
-                         }
-                     }
+                button2: {
+                    type: "button",
+                    subtype: "item",
+                    id: "Inventar",
+                    text: "Items",
+                    align: "center"
+                },
+                button3: {
+                    type: "button",
+                    subtype: "option",
+                    id: "optionButton",
+                    text: "Optionen",
+                    align: "right"
                 }
             }
         }
     };
-    $('#textarea').val(JSON.stringify(properties, null, 4));
     execute();
     
     function execute () {
-        var _prop = JSON.parse($('#textarea').val());
-        var GI = new GameInterface(_prop);
-    };
-    
-    $('#executeButton').on('click', function (e) {
-        $('#gamecontainer').html("");
-        execute();
-    });
-    
+        var GI = new GameInterface(properties);
+    };    
 });
 
 
