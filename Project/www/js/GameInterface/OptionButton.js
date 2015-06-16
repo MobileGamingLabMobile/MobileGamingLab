@@ -1,8 +1,10 @@
-var OptionButton = function (properties) {
+var OptionButton = function (properties, GI) {
     var _class = 'button round';
     if (properties.align) {
         _class += ' ' + properties.align;
     }
+    
+    this.GI = GI;
 
     this.$button = $('<a/>', {
         'class': _class,

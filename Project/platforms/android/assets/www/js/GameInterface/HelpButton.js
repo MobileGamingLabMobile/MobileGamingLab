@@ -9,8 +9,6 @@ var HelpButton = function (properties) {
         'id': 'helpButton',
         'text': '?'
     });
-
-    this.addEvent();
 };
 
 HelpButton.prototype = new Button;

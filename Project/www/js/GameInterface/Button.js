@@ -1,5 +1,6 @@
-var Button = function () {
+var Button = function (GI) {
     this.id = 'id';
+    this.GI = GI;
     this.$button = $('<a/>', {
         'class': 'button',
         'id': 'id',

@@ -1,9 +1,10 @@
-var Container = function (properties) {
+var Container = function (properties, GI) {
     this.$container = $('<div/>', {
         class: 'small-12'
     }).appendTo($('#gamecontainer'));
     
-    this.$map = null;
+    this.map = null;
+    this.GI = GI;
     
     this.setProperties(properties);
 };
@@ -50,7 +51,7 @@ Container.prototype.convertpCentToPixel = function (pCent) {
 };
 
 Container.prototype.addMap = function () {
-    this.$map = new Map(this).get();
+    this.map = new Map(this.$container);
 };
 
 Container.prototype.addElement = function (element) {
@@ -71,17 +72,17 @@ Container.prototype.addButton = function (properties) {
             $button.appendTo(this.$container);
             break;
         case('option'):
-            $button = new OptionButton(properties);
+            $button = new OptionButton(properties, this.GI);
             $button.appendTo(this.$container);
             $button.css("width", "33.3%");
             break;
         case('task'):
-            $button = new TaskButton(properties);
+            $button = new TaskButton(properties, this.GI);
             $button.appendTo(this.$container);
             $button.css("width", "33.3%");
             break;
         case('item'):
-            $button = new ItemButton(properties);
+            $button = new ItemButton(properties, this.GI);
             $button.appendTo(this.$container);
             $button.css("width", "33.3%");
             break;

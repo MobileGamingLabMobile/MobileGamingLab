@@ -1,9 +1,11 @@
-var ItemButton = function (properties) {
+var ItemButton = function (properties, GI) {
     var _class = 'button round';
     if (properties.align) {
         _class += ' ' + properties.align;
     }
-
+    
+    this.GI = GI;
+    
     this.$button = $('<a/>', {
         'class': _class,
         'id': 'itemButton',
