@@ -51,7 +51,7 @@ App.controller("changeProfileController", function ($http, $scope, $routeParams)
 
 });
 
-app.controller("PanelController", function(){
+App.controller("PanelController", function(){
    this.tab = 1;
    this.selectTab = function(setTab){
      this.tab = setTab;  
