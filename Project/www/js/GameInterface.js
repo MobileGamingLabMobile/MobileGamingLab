@@ -8,7 +8,7 @@ var GameInterface = function (properties) {
 };
 
 GameInterface.prototype.initialize = function (_header, _body, _footer) {
-    this.header = new Header(_header);
-    this.body = new Container(_body);
-    this.footer = new Container(_footer);
+    this.header = new Header(_header, this);
+    this.body = new Container(_body, this);
+    this.footer = new Container(_footer, this);
 };
