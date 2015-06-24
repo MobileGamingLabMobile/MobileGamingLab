@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.coolappz.MobileGamingLabApp" version="1.0.0">
-    <name>MobileGamingLabApp</name>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.coolappz.Project" version="1.0.0">
+    <name>Project</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

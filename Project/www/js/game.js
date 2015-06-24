@@ -38,22 +38,19 @@ App.controller("gameController", function () {
                     type: "button",
                     subtype: "task",
                     id: "taskButton",
-                    text: "Aufgaben",
-                    align: "left"
+                    text: "Aufgaben"
                 },
                 button2: {
                     type: "button",
                     subtype: "item",
                     id: "Inventar",
-                    text: "Items",
-                    align: "center"
+                    text: "Items"
                 },
                 button3: {
                     type: "button",
                     subtype: "option",
                     id: "optionButton",
-                    text: "Optionen",
-                    align: "right"
+                    text: "Optionen"
                 }
             }
         }
