@@ -7,8 +7,10 @@ App.controller('loginController', function ($scope, $http) {
 				.success(function (data) {
 					console.log(data);
 					if (data.success){
-					this.token = data.token;
-					window.location.href = "#gameselection/"+this.token;
+					//this.token = data.token;
+					window.sessionStorage.setItem("token", data.token);
+					window.sessionStorage.setItem("userID", null);
+					window.location.href = "#gameselection";
 				}
 				else{
 					console.log(data.message);

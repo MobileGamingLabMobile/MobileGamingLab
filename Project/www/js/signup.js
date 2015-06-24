@@ -6,8 +6,10 @@ App.controller('signUpController', function ($scope, $http) {
 			.success(function (data) {
 				console.log(data);
 				if (data.success){
-					this.token = data.token;
-					window.location.href = "#changeProfile/"+this.token;
+					//this.token = data.token;
+					window.sessionStorage.setItem("token", data.token);
+					window.sessionStorage.setItem("userID", null);
+					window.location.href = "#changeProfile";
 				}
 				else{
 					console.log(data.message);
