@@ -27,7 +27,16 @@ App.controller("profileController", function ($http, $scope) {
 				;
 			});
 		}
-		else {//abruf subscribed spiele eines fremden users	
+		else {
+			$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/subscribed/"+this.userID+"?access_token=" + $scope.token).success(function (data) {
+				console.log(data);
+				if (data.success)
+				{
+					$scope.sgames = data.games;
+					initialiseTable($scope.sgames, 'tab01');
+				}
+				;
+			});
 		}
 		this.tab = 1;
 	};
@@ -47,7 +56,16 @@ App.controller("profileController", function ($http, $scope) {
 				;
 			});
 		}
-		else {//abruf der erstellten spiele eines fremden users
+		else {
+			$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/owned/"+this.userID+"?access_token=" + $scope.token).success(function (data) {
+				console.log(data);
+				if (data.success)
+				{
+					$scope.ogames = data.games;
+					initialiseTable($scope.ogames, 'tab02');
+				}
+				;
+			});
 		}
 		this.tab = 2;
 	};
