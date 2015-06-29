@@ -14,13 +14,13 @@ App.controller("gameController", function () {
                 label1: {
                     type: "label",
                     id: "currentTaskLabel",
-                    text: "Task 1",
+                    text: "---",
                     align: "right"
                 },
                 label2: {
                     type: "label",
                     id: "timeLabel",
-                    text: "00:01:02",
+                    text: "--:--:--",
                     align: "right"
                 }
             }
