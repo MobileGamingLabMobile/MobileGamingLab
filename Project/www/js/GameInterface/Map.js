@@ -53,6 +53,10 @@ Map.prototype.addMarker = function (lat, lng) {
     this.markers.addLayer(marker);
 };
 
+Map.prototype.addMapItem = function (lat, lng, icon) {
+    
+};
+
 Map.prototype.locate = function () {
     this._map.locate({setView: true, maxZoom: 17});
 
