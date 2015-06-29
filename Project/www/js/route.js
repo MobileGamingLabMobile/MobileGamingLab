@@ -13,7 +13,7 @@ App.config(function ($routeProvider) {
 			})
 
 			.when('/gameselection', {
-				templateUrl: 'templates/selectgame.html',
+				templateUrl: 'templates/selectGame.html',
 				controller: 'selectGameController'
 			})
 

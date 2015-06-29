@@ -1,6 +1,12 @@
 App.controller("selectGameController", function ($scope, $http, $routeParams) {
 
+
 	this.tab = 3;
+	/**
+	 * checks if the tab with the number checkTab is selected
+	 * @param {int} checkTab
+	 * @returns {Boolean}
+	 */
 	this.isSelected = function (checkTab) {
 		return this.tab === checkTab;
 	};
@@ -8,8 +14,11 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 	//$scope.token = $routeParams.token;
 	$scope.token = window.sessionStorage.getItem("token");
 	console.log($scope.token);
-	
-	//load all games
+
+
+	/**
+	 * loadAllgame gets a object from the server with all stored games, saved in $scope.allgames
+	 */
 	this.loadAllgame = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/games/published/?access_token=" + $scope.token).success(function (data) {
 			console.log(data);
@@ -24,6 +33,12 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 		this.tab = 3;
 	};
 
+	/**
+	 * constructs a table for games with two columns, first gamename, second rating
+	 * the table is clickable, to get to the gameinfo
+	 * @param {array} data : array of objects of games
+	 * @param {string} tabid : id of the div in which the table should be initialised
+	 */
 	var initialiseTable = function (data, tabid) {
 		//initialise table
 		$table = $('<table class="display"></table>');
@@ -34,7 +49,8 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 		$hline.append($('<th></th>').html('Bewertung'));
 		$head.append($hline);
 		$table.append($head);
-
+		
+		// load needed data into an array and than into a row
 		var allgamesdata = [];
 		$.each(data, function (i, item) {
 			allgamesdata [i] = {
@@ -43,25 +59,30 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 				"rating": data[i].metadata.rating.toFixed(2)
 			};
 			//load table
-
 			$bline = $('<tr></tr>');
 			$bline.append($('<td></td>').html(allgamesdata[i].name));
-			$bline.append($('<td></td>').html('<div id="'+tabid + allgamesdata[i].id + '"></div>'));
+			$bline.append($('<td></td>').html('<div id="' + tabid + allgamesdata[i].id + '"></div>'));
 			$body.append($bline);
 		});
+		
+		// draw the table
 		$table.append($body);
-		$('#'+tabid).html('');
-		$('#'+tabid).append($table);
+		$('#' + tabid).html('');
+		$('#' + tabid).append($table);
 		var table = $table.DataTable();
 		table.draw();
+		
+		// make the row clickable
 		$body.on("click", "tr", function () {
 			var index = table.row(this).index();
 			console.log(index);
 			window.sessionStorage.setItem("gameID", allgamesdata[index].id);
 			window.location.href = "#gameinfo";
 		});
+		
+		// draw the rating stars
 		$.each(allgamesdata, function (i) {
-			$('#'+tabid + allgamesdata[i].id).rateYo({
+			$('#' + tabid + allgamesdata[i].id).rateYo({
 				rating: allgamesdata[i].rating,
 				precision: 2,
 				readOnly: true
@@ -69,7 +90,11 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 		});
 	};
 
-	// load subscribed games
+
+	/**
+	 * loads all subscribed games from the user
+	 * if success true: then initialise table
+	 */
 	this.loadSgame = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/subscribed/?access_token=" + $scope.token).success(function (data) {
 			console.log(data);
@@ -83,7 +108,10 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 		this.tab = 1;
 	};
 
-	//load own games
+	/**
+	 * loads all games created by this user
+	 * by success true: initialise table
+	 */
 	this.loadOgame = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/owned/?access_token=" + $scope.token).success(function (data) {
 			console.log(data);
@@ -95,6 +123,14 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 			;
 		});
 		this.tab = 2;
+	};
+
+	/**
+	 * loads the own profile with setting userID to null
+	 */
+	this.profile = function () {
+		window.sessionStorage.setItem("userID", null);
+		window.location.href = "#profile";
 	};
 
 });
