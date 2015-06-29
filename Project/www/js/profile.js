@@ -11,35 +11,50 @@ App.controller("profileController", function ($http, $scope) {
 	};
 
 
-	// load subscribed games
+	/**
+	 * loads subscribed games from the loades user
+	 */
 	this.loadSgame = function () {
-		$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/subscribed/?access_token=" + $scope.token).success(function (data) {
-			console.log(data);
-			if (data.success)
-			{
-				$scope.sgames = data.games;
-				initialiseTable($scope.sgames, 'tab01');
-			}
-			;
-		});
+		if (this.userID === "null")
+		{
+			$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/subscribed/?access_token=" + $scope.token).success(function (data) {
+				console.log(data);
+				if (data.success)
+				{
+					$scope.sgames = data.games;
+					initialiseTable($scope.sgames, 'tab01');
+				}
+				;
+			});
+		}
+		else {//abruf subscribed spiele eines fremden users	
+		}
 		this.tab = 1;
 	};
 
-	//load own games
+	/**
+	 * loads owned games from the loaded user
+	 */
 	this.loadOgame = function () {
-		$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/owned/?access_token=" + $scope.token).success(function (data) {
-			console.log(data);
-			if (data.success)
-			{
-				$scope.ogames = data.games;
-				initialiseTable($scope.ogames, 'tab02');
-			}
-			;
-		});
+		if (this.userID === "null") {
+			$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/owned/?access_token=" + $scope.token).success(function (data) {
+				console.log(data);
+				if (data.success)
+				{
+					$scope.ogames = data.games;
+					initialiseTable($scope.ogames, 'tab02');
+				}
+				;
+			});
+		}
+		else {//abruf der erstellten spiele eines fremden users
+		}
 		this.tab = 2;
 	};
 
-	// Nutzerdaten Laden
+	/**
+	 * loads user data from the selected profil
+	 */
 	this.loaduser = function () {
 		console.log("userID:" + this.userID);
 		if (this.userID === "null")
@@ -56,7 +71,7 @@ App.controller("profileController", function ($http, $scope) {
 		else
 		{
 			$scope.userID = false;
-			$http.get("http://giv-mgl.uni-muenster.de:8080/profile/"+this.userID+"/?access_token=" + $scope.token).success(function (data) {
+			$http.get("http://giv-mgl.uni-muenster.de:8080/profile/" + this.userID + "/?access_token=" + $scope.token).success(function (data) {
 				if (data.success) {
 					$scope.users = data.user;
 					console.log(data.user);
@@ -67,6 +82,12 @@ App.controller("profileController", function ($http, $scope) {
 		console.log($scope.userID);
 	};
 
+	/**
+	 * constructs a table for games with two columns, first gamename, second rating
+	 * the table is clickable, to get to the gameinfo
+	 * @param {array} data : array of objects of games
+	 * @param {string} tabid : id of the div in which the table should be initialised
+	 */
 	var initialiseTable = function (data, tabid) {
 		console.log(data);
 		console.log(tabid);
@@ -97,7 +118,7 @@ App.controller("profileController", function ($http, $scope) {
 		$table.append($body);
 		$('#' + tabid).html('');
 		$('#' + tabid).append($table);
-		console.log($('#'+tabid).html());
+		console.log($('#' + tabid).html());
 		var table = $table.DataTable();
 		table.draw();
 		$body.on("click", "tr", function () {
@@ -115,7 +136,9 @@ App.controller("profileController", function ($http, $scope) {
 		});
 	};
 
-	//logout
+	/**
+	 * logout
+	 */
 	$scope.logout = function () {
 		$http.post('http://giv-mgl.uni-muenster.de:8080/logout', {access_token: $scope.token}).success(function (data) {
 			console.log(data);
