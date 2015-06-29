@@ -74,19 +74,24 @@ App.controller("gameInfoController", function ($scope, $http) {
 		$('#comments').html('');
 		console.log($('#comments'));
 		$.each(data, function (i, item) {
-			$panel = $('<div class="panel"></div>');
-			$head = $('<div class="row"><div>');
-			$author = $('<div class="small-3 columns right"></div>').html(data[i].user.profile.name);
-			$rating = $('<div class="small-3 columns left"></div>').html('<div id="' + data[i]._id + '"></div>');
-			$body = $('<div class="row"><div>');
-			$text = $('<div class="panel"></div>').html(data[i].text);
+			var farbe;
+			if(i % 2)
+			farbe = 'style="background-color: #fefefe"';
+			else{
+			farbe = 'style="background-color: #eeeeee"';
+			}
+			$panel = $('<div '+farbe+'></div>');
+			$head = $('<div class="row" '+farbe+'><div>');
+			$author = $('<div class="small-3 columns right" '+farbe+'></div>').html(data[i].user.profile.name);
+			$rating = $('<div class="small-3 columns left" '+farbe+'></div>').html('<div id="' + data[i]._id + '"></div>');
+			$body = $('<div class="row" '+farbe+'><div>');
+			$text = $('<div  '+farbe+'></div>').html(data[i].text);
 			$body.append($text);
 			$head.append($author);
 			$head.append($rating);
 			$panel.append($head);
 			$panel.append($body);
 			$('#comments').append($panel);
-			console.log($('#comments'));
 		});
 		$.each(data, function (i, item) {
 			console.log(data[i]._id);
@@ -154,7 +159,7 @@ App.controller("gameInfoController", function ($scope, $http) {
 			console.log(data);
 			if (play) {
 				//weiterleitung zum spiel
-				window.location.href = "#game";
+				play();
 			}
 			else{
 				window.location.href = "#gameinfo";
@@ -162,6 +167,13 @@ App.controller("gameInfoController", function ($scope, $http) {
 
 		});
 
+	};
+	
+	/**
+	 * weiterleitung zum spiel
+	 */
+	var play = function(){
+		window.location.href = "#game";
 	};
 
 
@@ -184,7 +196,7 @@ App.controller("gameInfoController", function ($scope, $http) {
 
 	/**
 	 * checks if the user already has subscribed this game
-	 * @returns {undefined}
+	 * and creates the buttons subscribe or unsubscribe depending on subscribe is true or false
 	 */
 	this.gamesubscribed = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/subscribed/?access_token=" + $scope.token).success(function (data) {
@@ -219,11 +231,18 @@ App.controller("gameInfoController", function ($scope, $http) {
 					$button = $('<div class="small-6 small-centered columns "></div>');
 					$content = $('<a id="unbutton" class="button radius small expand">Deabonnieren</a>');
 					$button.append($content);
+					$content2 = $('<a id="playbutton" class="button radius small expand">Play</a>');
+					$button.append($content2);
 					$('#button').append($button);
+					$("#playbutton").on('click', function(){
+						console.log('play');
+						play();
+					});
 					$("#unbutton").on('click', function(){
 						console.log('unsubscribe');
 						unsubscribe();
 					});
+					
 				}
 			}
 			;
