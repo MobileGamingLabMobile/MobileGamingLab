@@ -1,21 +1,27 @@
-var Header = function (properties) {
+var Header = function (properties, GI) {
     this.$container = $('<div/>', {
         class: 'small-12'
     }).appendTo($('#gamecontainer'));
     
     this.$map = null;
-    
+    this.GI = GI;
     this.setProperties(properties);
 };
 
 Header.prototype = new Container;
 
 Header.prototype.setProperties = function (properties) {
+    var that = this;
     for (var prop in properties) {
         switch (prop) {
             case('gamename'):
-                $headline = $('<h1>' + properties[prop] + ' <a href="#profile/{{token}}" class="button radius tiny right">Profil</a> </h1>');
+                $headline = $('<a class="button radius tiny left" id="quitbutton">Spiel beenden</a> <h1>' + properties[prop] + '</h1>');
                 $headline.appendTo(this.$container);
+                $('#quitbutton').on('click', function () {
+                    //TODO: Disconnect socket
+                    window.window.location.href = "#gameselection";
+                    that.GI.socket.disconnect();
+                });
                 break;
             case('background'):
                 if (properties[prop]) {
