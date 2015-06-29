@@ -24,12 +24,7 @@
 				<!--playbutton
 				es fehlt noch die funktion dass der user auch spielen kann wenn er sich auf einem mobile devices befinden (siehe gameinfo.subscribe())-->
 				<div class="row" ng-init="gameinfo.gamesubscribed()">
-					<div class="small-6 small-centered columns ">
-						<a class="button radius small expand" ng-click="gameinfo.subscribe(false)" ng-hide="gameinfo.subscribed">Abbonieren</a>
-					</div>
-					<div class="small-6 small-centered columns ">
-						<a class="button radius small expand" ng-click="gameinfo.unsubscribe()" ng-show="gameinfo.subscribed">Kündigen</a>
-					</div>
+					<div id="button" class="small-6 small-centered columns "></div>
 				</div>
 			</div>
 		</header>

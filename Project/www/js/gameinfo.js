@@ -1,18 +1,29 @@
-App.controller("gameInfoController", function ($scope, $http, $routeParams) {
+App.controller("gameInfoController", function ($scope, $http) {
 
-	//$scope.token = $routeParams.token;
+
 	$scope.token = window.sessionStorage.getItem("token");
-	//$scope.gameID = $routeParams.gameID;
 	$scope.gameID = window.sessionStorage.getItem("gameID");
-	
+
 	this.tab = 1;
+	/**
+	 * selects the tab with the number setTab
+	 * @param {int} setTab
+	 */
 	this.selectTab = function (setTab) {
 		this.tab = setTab;
 	};
+	/**
+	 * checks if the tab with the number checktab is selected
+	 * @param {int} checkTab
+	 * @returns {Boolean}
+	 */
 	this.isSelected = function (checkTab) {
 		return this.tab === checkTab;
 	};
 
+	/**
+	 * loads all data from this game and stores it into $scope.game
+	 */
 	this.loadgame = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/games/" + $scope.gameID + "/?access_token=" + $scope.token).success(function (data) {
 			console.log(data);
@@ -28,12 +39,15 @@ App.controller("gameInfoController", function ($scope, $http, $routeParams) {
 					precision: 2,
 					readOnly: true
 				});
-				//window.sessionStorage.setItem(userID, data.game[0].metadata.owner);
+				window.sessionStorage.setItem("userID", data.game[0].metadata.owner);
 			}
 			;
 		});
 	};
 
+	/**
+	 * loads all Comments from this game and stores them into $scope.comments
+	 */
 	this.loadComments = function () {
 		this.tab = 2;
 		$http.post("http://giv-mgl.uni-muenster.de:8080/comment", {
@@ -52,26 +66,36 @@ App.controller("gameInfoController", function ($scope, $http, $routeParams) {
 		});
 	};
 
+	/**
+	 * gets an array of objects and displays the comments in gameinfo.html into a div
+	 * @param {object} data
+	 */
 	var initialiseComments = function (data) {
-		$('#comments').append('');
+		$('#comments').html('');
 		console.log($('#comments'));
 		$.each(data, function (i, item) {
-			$panel = $('<div class="panel"></div>');
-			$head = $('<div class="row"><div>');
-			$author = $('<div class="small-3 columns right"></div>').html(data[i].user.profile.name);
-			$rating = $('<div class="small-3 columns left"></div>').html('<div id="' + data[i].id + '"></div>');
-			$body = $('<div class="row"><div>');
-			$text = $('<div class="panel"></div>').html(data[i].text);
+			var farbe;
+			if(i % 2)
+			farbe = 'style="background-color: #fefefe"';
+			else{
+			farbe = 'style="background-color: #eeeeee"';
+			}
+			$panel = $('<div '+farbe+'></div>');
+			$head = $('<div class="row" '+farbe+'><div>');
+			$author = $('<div class="small-3 columns right" '+farbe+'></div>').html(data[i].user.profile.name);
+			$rating = $('<div class="small-3 columns left" '+farbe+'></div>').html('<div id="' + data[i]._id + '"></div>');
+			$body = $('<div class="row" '+farbe+'><div>');
+			$text = $('<div  '+farbe+'></div>').html(data[i].text);
 			$body.append($text);
 			$head.append($author);
 			$head.append($rating);
 			$panel.append($head);
 			$panel.append($body);
 			$('#comments').append($panel);
-			console.log($('#comments'));
 		});
 		$.each(data, function (i, item) {
-			$('#' + data[i].id).rateYo({
+			console.log(data[i]._id);
+			$('#' + data[i]._id).rateYo({
 				rating: data[i].rating,
 				precision: 2,
 				readOnly: true
@@ -88,12 +112,15 @@ App.controller("gameInfoController", function ($scope, $http, $routeParams) {
 		}
 	});
 
-	// submit a new comment
+	/*
+	 * send the input of the new comment to the server
+	 * but first checks if a rating is set by the user
+	 */
 	this.submitComment = function () {
-		$('#alert').append('');
+		$('#alert').html('');
 		console.log($scope.rating);
 		if ($scope.rating === 0) {
-			$alert=$('<div data-alert class="alert-box info radius"></div>').html('Bitte geben Sie eine Bewertung ein!');
+			$alert = $('<div data-alert class="alert-box info radius"></div>').html('Bitte geben Sie eine Bewertung ein!');
 			$('#alert').append($alert);
 		}
 		else {
@@ -117,10 +144,13 @@ App.controller("gameInfoController", function ($scope, $http, $routeParams) {
 		;
 	};
 
-	//subscribe game
-	// parameter play defines if your on a desktop or an mobile device... if play is true subscribe is also the play functionality
-	// if play is false, this function only subscribes the user but he cannot play the game
-	this.subscribe = function (play) {
+
+	/**
+	 * tells the server to put this game onto a table of the subscribed games of this user
+	 * @param {boolean} play :parameter play defines if your on a desktop or an mobile device... if play is true subscribe is also the play functionality
+	 * if play is false, this function only subscribes the user but he cannot play the game
+	 */
+	var subscribe = function (play) {
 		$http.post("http://giv-mgl.uni-muenster.de:8080/games/" + $scope.gameID, {
 			access_token: $scope.token,
 			operation: "subscribe",
@@ -129,28 +159,45 @@ App.controller("gameInfoController", function ($scope, $http, $routeParams) {
 			console.log(data);
 			if (play) {
 				//weiterleitung zum spiel
-				window.location.href = "#game";
+				play();
 			}
-			;
+			else{
+				window.location.href = "#gameinfo";
+			}
 
 		});
 
 	};
+	
+	/**
+	 * weiterleitung zum spiel
+	 */
+	var play = function(){
+		window.location.href = "#game";
+	};
 
-	//to unsubscribe the user from this game
-	this.unsubscribe = function () {
+
+	/**
+	 * unsubscribes the user from this game
+	 */
+	var unsubscribe = function () {
+		console.log("hallo");
 		$http.post("http://giv-mgl.uni-muenster.de:8080/games/" + $scope.gameID, {
 			access_token: $scope.token,
 			operation: "unsubscribe",
 			game_id: $scope.gameID
 		}).success(function (data) {
 			console.log(data);
-
+			window.location.href = "#gameinfo";
 		});
 
 	};
 
-	// returns true if the user has subscribed this game and false if not
+
+	/**
+	 * checks if the user already has subscribed this game
+	 * and creates the buttons subscribe or unsubscribe depending on subscribe is true or false
+	 */
 	this.gamesubscribed = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/user/games/subscribed/?access_token=" + $scope.token).success(function (data) {
 			console.log(data);
@@ -161,20 +208,50 @@ App.controller("gameInfoController", function ($scope, $http, $routeParams) {
 				$.each($scope.sgames, function (i) {
 					if ($scope.gameID === $scope.sgames[i]._id)
 					{
-						console.log("GameinfoID:"+$scope.gameID+" Abonniertgame:"+$scope.sgames[i]._id);
+						//console.log("GameinfoID:" + $scope.gameID + " Abonniertgame:" + $scope.sgames[i]._id);
 						subscribed = true;
 					}
-					;
-					console.log("hallp");
 				});
 				console.log(subscribed);
-				this.subscribed = subscribed;
-				console.log(this.subscribed);
+				$('#button').html('');
+				if (subscribed === false)
+				{
+					$button = $('<div class="small-6 small-centered columns "></div>');
+					$content = $('<a id="sbutton" class="button radius small expand">Abonnieren</a>');
+					$button.append($content);
+					$('#button').append($button);
+					$("#sbutton").on('click', function(){
+						console.log('subscribe');
+						//spielen nur bei subscribe(true) möglich
+						subscribe(false);
+						
+					});
+				}
+				else {
+					$button = $('<div class="small-6 small-centered columns "></div>');
+					$content = $('<a id="unbutton" class="button radius small expand">Deabonnieren</a>');
+					$button.append($content);
+					$content2 = $('<a id="playbutton" class="button radius small expand">Play</a>');
+					$button.append($content2);
+					$('#button').append($button);
+					$("#playbutton").on('click', function(){
+						console.log('play');
+						play();
+					});
+					$("#unbutton").on('click', function(){
+						console.log('unsubscribe');
+						unsubscribe();
+					});
+					
+				}
 			}
 			;
 		});
 	};
 
+	/**
+	 * loads the profile of the user with setting the user id to null
+	 */
 	this.profile = function () {
 		window.sessionStorage.setItem("userID", null);
 		window.location.href = "#profile";
