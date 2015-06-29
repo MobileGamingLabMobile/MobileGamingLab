@@ -1,5 +1,6 @@
 var GPS = L.Control.extend({
-    includes: L.Mixin.Events,
+
+	includes: L.Mixin.Events,
 	options: {
 		autoActive: false,		
 		autoCenter: false,		
@@ -71,7 +72,7 @@ var GPS = L.Control.extend({
 			this.activate();
 	},
 
-	getLocation: function() {	
+	getLocation: function() {
 		return this._currentLocation;
 	},
 
@@ -136,5 +137,5 @@ var GPS = L.Control.extend({
 		this.timerAlert = setTimeout(function() {
 			that._alert.style.display = 'none';
 		}, 5);
-	}    
+	}
 });

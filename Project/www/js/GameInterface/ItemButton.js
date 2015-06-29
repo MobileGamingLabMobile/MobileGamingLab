@@ -11,6 +11,7 @@ var ItemButton = function (properties, GI) {
         'id': 'itemButton',
         'text': properties.text
     });
+    this.$button.css('font-size', '75%');
 };
 
 ItemButton.prototype = new Button;
