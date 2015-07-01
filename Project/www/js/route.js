@@ -8,39 +8,43 @@ App.config(function ($routeProvider) {
 
 			// route for the login page
 			.when('/', {
-				templateUrl: 'templates/login.html',
+				templateUrl: 'mTemplates/login.html',
 				controller: 'loginController'
 			})
 
 			.when('/gameselection', {
-				templateUrl: 'templates/selectGame.html',
+				templateUrl: 'mTemplates/selectGame.html',
 				controller: 'selectGameController'
 			})
 
 			.when('/gameinfo', {
-				templateUrl: 'templates/gameinfo.html',
+				templateUrl: 'mTemplates/gameinfo.html',
 				controller: 'gameInfoController'
 			})
 
 			.when('/game', {
-				templateUrl: 'templates/game.html',
+				templateUrl: 'mTemplates/game.html',
 				controller: 'gameController'
 			})
 
 			.when('/profile', {
-				templateUrl: 'templates/profile.html',
+				templateUrl: 'mTemplates/profile.html',
 				controller: 'profileController'
 			})
 
 			.when('/changeProfile', {
-				templateUrl: 'templates/changeProfile.html',
+				templateUrl: 'mTemplates/changeProfile.html',
 				controller: 'changeProfileController'
 			})
 
 			// route for the contact page
 			.when('/signup', {
-				templateUrl: 'templates/signup.html',
+				templateUrl: 'mTemplates/signup.html',
 				controller: 'signUpController'
+			})
+			.when('/impressum', {
+				templateUrl: 'mTemplates/impressum.html',
+				controller: 'impressumController'
 			})
 			.otherwise({
 				redirectTo: "/"
