@@ -1,12 +1,8 @@
-App.controller("changeProfileController", function ($http, $scope) {
+App.controller("changeProfileController", function ($http, $scope, $routeParams) {
 
-	$scope.token = window.sessionStorage.getItem("token");
-	$scope.userID = window.sessionStorage.getItem("userID");
-
-	/** sends new Login data to the server
-	* success true: server returns new user data
-	* success false: server returns error message
-	 */ 
+	$scope.token = $routeParams.token;
+	
+        // deliver new password
 	$scope.submitLogin = function () {
 		$http.post('http://giv-mgl.uni-muenster.de:8080/profile', {
 			operation: "login",
@@ -18,7 +14,7 @@ App.controller("changeProfileController", function ($http, $scope) {
 			console.log(data);
 			if (data.success) {
 				$scope.users = data.user;
-				window.location.href = "#profile";
+				window.location.href = "#profile/" + $scope.token;
 			}
 			else {
 				$scope.message = data.message;
@@ -28,10 +24,7 @@ App.controller("changeProfileController", function ($http, $scope) {
 		});
 	};
 
-	/** sends the new profil data to the server
-	* success true: server returns new user data
-	* success false: server returns error message
-	*/
+        // deliver new personal profile 
 	$scope.submitProfile = function () {
 		$http.post('http://giv-mgl.uni-muenster.de:8080/profile', {
 			operation: "profile",
@@ -44,7 +37,7 @@ App.controller("changeProfileController", function ($http, $scope) {
 			console.log(data);
 			if (data.success) {
 				$scope.users = data.user;
-				window.location.href = "#profile";
+				window.location.href = "#profile/" + $scope.token;
 			}
 			else {
 				$scope.message = data.message;
@@ -54,22 +47,18 @@ App.controller("changeProfileController", function ($http, $scope) {
 		});
 	};
 
-	/**
-	 * test if inputs of user in the password fields are the same
-	 * @returns {Boolean}
-	 */
 	this.notsame = function () {
 		return ($scope.newPassword !== $scope.newPassword2);
 	};
 
 });
 
-App.controller("PanelController", function () {
-	this.tab = 1;
-	this.selectTab = function (setTab) {
-		this.tab = setTab;
-	};
-	this.isSelected = function (checkTab) {
-		return this.tab === checkTab;
-	};
+App.controller("PanelController", function(){
+   this.tab = 1;
+   this.selectTab = function(setTab){
+     this.tab = setTab;  
+   };
+   this.isSelected = function(checkTab){
+       return this.tab === checkTab;
+   };
 });
