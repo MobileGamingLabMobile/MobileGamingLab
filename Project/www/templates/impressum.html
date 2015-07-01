@@ -1,0 +1,65 @@
+<div class="wrapper" ng-controller="impressumController as impressum">
+    <header>
+        <div class="panel">
+            <div class="row">
+                <div class="small-3 columns">
+                    <a href="#gameselection" class="button radius tiny expand">Spieleauswahl</a>
+                </div>
+                <div class="small-6 columns"></div>
+                <div class="small-3 columns">
+                    <a href="#profile" class="button radius tiny expand">Profil</a>
+                </div>
+            </div>
+            <div class="leftcontainer">
+            <dl class="sub-nav">
+                <dd ng-class="{ active: impressum.isSelected(1)}">
+                    <a class="button radius" ng-click="impressum.showFAQ()">FAQ</a>
+                </dd>
+                <dd ng-class="{ active: impressum.isSelected(2)}">
+                    <a class="button radius" ng-click="impressum.showOverUs()">Über uns</a>
+                </dd>
+            </dl>
+            </div>
+            <!--FAQ's-->
+            <div class="panel" ng-show="impressum.isSelected(1)">
+                <h2>FAQ</h2>
+                <br>
+                <h4>1. Wie kann ich ein Spiel spielen?</h4>
+                <p>Nachdem Sie sich eingeloggt haben, steht ihnen eine Auswahl an verfügbaren spielen zur Verfügung. Tippen Sie auf das Spiel, dass sie gerne spielen möchten. Tippen Sie nun auf 'Spielen', um das Spiel zu starten.</p>
+                <br>
+                <h4>2. Wie kann ich mein Profil bearbeiten / löschen?</h4>
+                <p>Auf der eigenen Profilseite wird ein 'Profil bearbeiten'-Button angeboten. Hier ist es sowohl möglich die personenbezogenen Daten, als auch das persönliche Passwort zu ändern. Ebenfalls ist hier eine unkomplizierte Löschung des Accounts möglich.</p>
+                <br>
+                <h4>3. Werden meine Daten an Dritte weitergeleitet?</h4>
+                <p>Nein! Alle persönlichen Daten werden sehr vertraulich auf Servern, deren Standort in Deutschland ist, behandelt.</p>
+                <br>
+                <h4>4. Wie kann ich Spiele Abbonieren / Kündigen?</h4>
+                <p>Auf der Spieleauswahlseite sind alle verfügbaren Spiele aufgelistet. Beim tippen auf ein Spiel öffnet sich die Spieleinfo Seite zu dem jeweiligen Spiel. Dort kann ein Spiel abboniert, sowie gekündigt werden.</p>
+                <br>
+                <h4>5. Wie kann ich Spiele bewerten?</h4>
+                <p>Wenn ein Spiel abboniert wurde, kann auf der Spieleinfo Seite unter Kommentare eine Bewertung, sowie ein Kommentar zu diesem Spiel abgegeben werden.</p>
+                <br>
+                <h4>6. Kann ich mein Spiel pausieren und zu einem späteren Zeitpunkt weiterspielen?</h4>
+                <p>Ja, dies ist möglich und geschieht automatisch.</p>
+                <br>
+                <h4>7. Wie kann ich eigene Spiele erstellen?</h4>
+                <p>Dies ist im Moment noch nicht möglich, da sich dies noch in der Planungsphase befindet. In einem späteren Update dieser Applikation wird dies möglich sein.</p>
+                <br>
+                <h4>8. Kann ich mit anderen Spielern kommunizieren?</h4>
+                <p>Dies ist im Moment noch nicht möglich, da sich dies noch in der Planungsphase befindet. In einem späteren Update dieser Applikation wird dies möglich sein.</p>
+            </div>
+            <!--About us-->
+            <div class="panel" ng-show="impressum.isSelected(2)">
+                <h2>Über uns</h2>
+                <br>
+                <p>
+                    Dieses Standortbezogene Spiel wurde als Studienprojekt von Jana, Florian, Jens, Milan, Clara, Jonas und Maximilian an der Westfälische Wilhelms-Universität Münster erstellt und wird seit 2015 von uns unterstützt und weiterentwickelt.<br>
+                    Diese Applikation wurde mitunter den Bibliotheken jQuery, foundation 5, Leaflet und Angular erstellt und basiert größtenteils unter der MIT Lizenz. Als Datenbank wurde MongoDB verwendet.<br>
+                    Der Code zu unserem Studienprojekt befindet sich auf github unter den folgenden Links:<br>
+                    <a href="https://github.com/MobileGamingLabMobile/MobileGamingLab"> https://github.com/MobileGamingLabMobile/MobileGamingLab</a><br>
+                    <a href="https://github.com/MobileGamingLabMobile/MobileGamingLabBackend"> https://github.com/MobileGamingLabMobile/MobileGamingLabBackend</a>
+                </p>
+            </div>
+        </div>
+    </header>
+</div>
