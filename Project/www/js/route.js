@@ -8,53 +8,44 @@ App.config(function ($routeProvider) {
 
 			// route for the login page
 			.when('/', {
-				templateUrl: 'templates/login.html',
+				templateUrl: 'mTemplates/login.html',
 				controller: 'loginController'
 			})
 
-                        // route for the gameselection page
 			.when('/gameselection', {
-				templateUrl: 'templates/selectGame.html',
+				templateUrl: 'mTemplates/selectGame.html',
 				controller: 'selectGameController'
 			})
 
-                        // route for the gameinfo page
 			.when('/gameinfo', {
-				templateUrl: 'templates/gameinfo.html',
+				templateUrl: 'mTemplates/gameinfo.html',
 				controller: 'gameInfoController'
 			})
 
-                        // route for the game page
 			.when('/game', {
-				templateUrl: 'templates/game.html',
+				templateUrl: 'mTemplates/game.html',
 				controller: 'gameController'
 			})
 
-                        // route for the profile page
 			.when('/profile', {
-				templateUrl: 'templates/profile.html',
+				templateUrl: 'mTemplates/profile.html',
 				controller: 'profileController'
 			})
 
-                        // route for the change profile page
 			.when('/changeProfile', {
-				templateUrl: 'templates/changeProfile.html',
+				templateUrl: 'mTemplates/changeProfile.html',
 				controller: 'changeProfileController'
 			})
 
-			// route for the sign up page
+			// route for the contact page
 			.when('/signup', {
-				templateUrl: 'templates/signup.html',
+				templateUrl: 'mTemplates/signup.html',
 				controller: 'signUpController'
 			})
-                        
-                        // route for the faq/about page
-                        .when('/impressum', {
-				templateUrl: 'templates/impressum.html',
+			.when('/impressum', {
+				templateUrl: 'mTemplates/impressum.html',
 				controller: 'impressumController'
 			})
-                        
-                        // in case an invalid adress will be loaded the login page will be call
 			.otherwise({
 				redirectTo: "/"
 			});
