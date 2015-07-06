@@ -1727,7 +1727,7 @@ meta.foundation-mq-topbar {
       z-index: 98; }
 
 .top-bar {
-  background: #333333;
+  background: #d8d8d8;
   height: 2.8125rem;
   line-height: 2.8125rem;
   margin-bottom: 0;
@@ -3721,7 +3721,9 @@ p {
   font-weight: normal;
   line-height: 1.6;
   margin-bottom: 1.25rem;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility; 
+  text-align: justify; 
+}
   p.lead {
     font-size: 1.21875rem;
     line-height: 1.6; }
@@ -3731,7 +3733,7 @@ p {
     line-height: 1.35; }
 
 /* Default header styles */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h5, h6 {
   color: #222222;
   font-family: 'Droid Serif', serif;;
   font-style: normal;
@@ -3756,6 +3758,15 @@ h3 {
   font-size: 1.375rem; }
 
 h4 {
+  color: #6f6f6f;
+  font-family: 'Droid Serif', serif;;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  text-rendering: optimizeLegibility;
+  text-align: center; 
   font-size: 1.125rem; }
 
 h5 {
@@ -3926,7 +3937,16 @@ blockquote p {
     font-size: 1.6875rem; }
 
   h4 {
-    font-size: 1.4375rem; }
+  color: #6f6f6f;
+  font-family: 'Droid Serif', serif;;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  text-rendering: optimizeLegibility;
+  text-align: center; 
+  font-size: 1.125rem; }
 
   h5 {
     font-size: 1.125rem; }
@@ -6362,4 +6382,21 @@ th.hide-for-touch {
 #map{ 
   height: 50%; 
   width: 100%;
+}
+
+.leftcontainer{
+    display: table-cell;
+    text-align: left;
+    vertical-align: left;
+}
+
+.authordiv{
+    font-size: 0.8em;
+    font-style:italic;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.commentdiv{
+    font-size: 1em;
 }
