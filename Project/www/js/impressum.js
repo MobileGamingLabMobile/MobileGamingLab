@@ -16,4 +16,9 @@ App.controller("impressumController", function ($http, $scope, $routeParams) {
 	this.showOverUs = function(){
 		this.tab = 2;
 	};
+        
+        // show 'Legende' tab
+	this.showLegend = function(){
+		this.tab = 3;
+	};
 });
