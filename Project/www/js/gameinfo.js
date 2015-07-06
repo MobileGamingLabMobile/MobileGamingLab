@@ -78,14 +78,14 @@ App.controller("gameInfoController", function ($scope, $http) {
 			if(i % 2)
 			farbe = 'style="background-color: #fefefe"';
 			else{
-			farbe = 'style="background-color: #eeeeee"';
+			farbe = 'style="background-color: #e0e0e0"';
 			}
 			$panel = $('<div '+farbe+'></div>');
 			$head = $('<div class="row" '+farbe+'><div>');
-			$author = $('<div class="small-3 columns right" '+farbe+'></div>').html(data[i].user.profile.name);
-			$rating = $('<div class="small-3 columns left" '+farbe+'></div>').html('<div id="' + data[i]._id + '"></div>');
+			$author = $('<div class="authordiv"><div class="small-12 columns right" '+farbe+'></div></div>').html(data[i].user.profile.name);
+			$rating = $('<div class="small-12 columns left" '+farbe+'></div>').html('<div id="' + data[i]._id + '"></div>');
 			$body = $('<div class="row" '+farbe+'><div>');
-			$text = $('<div  '+farbe+'></div>').html(data[i].text);
+			$text = $('<div class="commentdiv"><div  '+farbe+'></div></div>').html(data[i].text);
 			$body.append($text);
 			$head.append($author);
 			$head.append($rating);
@@ -216,7 +216,7 @@ App.controller("gameInfoController", function ($scope, $http) {
 				$('#button').html('');
 				if (subscribed === false)
 				{
-					$button = $('<div class="small-6 small-centered columns "></div>');
+					$button = $('<div class="small-12 small-centered columns "></div>');
 					$content = $('<a id="sbutton" class="button radius small expand">Abonnieren</a>');
 					$button.append($content);
 					$('#button').append($button);
@@ -228,10 +228,10 @@ App.controller("gameInfoController", function ($scope, $http) {
 					});
 				}
 				else {
-					$button = $('<div class="small-6 small-centered columns "></div>');
+					$button = $('<div class="small-12 small-centered columns "></div>');
 					$content = $('<a id="unbutton" class="button radius small expand">Deabonnieren</a>');
 					$button.append($content);
-					$content2 = $('<a id="playbutton" class="button radius small expand">Play</a>');
+					$content2 = $('<a id="playbutton" class="button radius small expand">Spielen</a>');
 					$button.append($content2);
 					$('#button').append($button);
 					$("#playbutton").on('click', function(){

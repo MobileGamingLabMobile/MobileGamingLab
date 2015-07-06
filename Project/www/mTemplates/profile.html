@@ -1,15 +1,29 @@
 <div class="wrapper" ng-controller="profileController
             as ctrProfile">
+    <nav class="top-bar" data-topbar role="navigation">
+        <div class="small-3 columns">
+            <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
+        </div>
+        <div class="small-3 columns">
+            <img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block">
+        </div>
+        <div class="small-3 columns">
+            <img src="img/editor-icon.svg" width="40" height="40" style="margin:3px auto;display:block">
+        </div>
+        <div class="small-3 columns">
+            <img src="img/logout.svg" width="40" height="40" style="margin:3px auto;display:block">
+        </div>
+    </nav>
     <header ng-init="ctrProfile.loaduser()">
         <div class="panel" >
             <div class="row">
-                <div class="small-2 columns">
+                <div class="small-4 columns">
                     <a href="#gameselection" class="button radius tiny expand">Spieleauswahl</a>
                 </div>
-                <div class="small-8 columns">
+                <div class="small-5 columns">
                     <h3>{{users.profile.name}}</h3>
                 </div>
-                <div class="small-2 columns">
+                <div class="small-3 columns">
                     <a class="button radius tiny expand" ng-click="logout()" ng-show="userID">Logout</a>
                 </div>
             </div>
@@ -18,16 +32,15 @@
             </div>
             <!--Benutzerinformationen-->
             <div>
-                <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2">
-                    <li>
-                        <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
-                    </li>
-                    <li>
-                        {{users.profile.profession}} <br>
-                        {{users.profile.country}} <br>
-                        {{users.profile.city}}
-                    </li>
-                </ul>
+                <div class="small-5 columns">
+                    <img src="img/profilbild.svg" width="150" height="150" style="margin:0px auto;display:block">
+                </div>
+                <div class="small-7 columns">
+                    <p></p>
+                    {{users.profile.profession}} <br>
+                    {{users.profile.country}} <br>
+                    {{users.profile.city}}
+                </div>
             </div>
             <br>
             <div class="row">
