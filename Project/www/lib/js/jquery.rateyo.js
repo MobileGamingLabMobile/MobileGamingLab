@@ -25,12 +25,12 @@
 
   var DEFAULTS = {
 
-    starWidth: "32px",
-    normalFill: "gray",
-    ratedFill: "#f39c12",
+    starWidth: "20px",
+    normalFill: "grey",
+    ratedFill: "yellow",
     numStars: 5,
     maxValue: 5,
-    precision: 1,
+    precision: 2,
     rating: 0,
     fullStar: false,
     halfStar: false,
