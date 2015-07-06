@@ -1,22 +1,30 @@
 <div class="wrapper"  ng-controller="changeProfileController">
+     <nav class="top-bar" data-topbar role="navigation">
+        <div class="small-3 columns left">
+            <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
+        </div>
+        <div class="small-3 columns right">
+            <a ng-click="logout()" ng-show="userID"><img src="img/logout.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
+        </div>
+        <div class="small-3 columns right">
+            <a href="#gameselection"><img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
+        </div>
+        <div class="small-3 columns right">
+            <a href="#profile"><img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
+        </div>
+    </nav>
     <header>
         <div class="panel">
             <div class="row">
-                <div class="small-3 columns">
-                    <a href="#profile" class="button radius tiny expand">zurück</a>
-                </div>
-                <div class="small-6 columns">
-                    <h3>Benutzerangaben ändern</h3>
-                </div>
-                <div class="small-3 columns">
-                    <!-- <a href="#profile" class="button radius tiny expand">Profil löschen</a> -->
+                <div class="small-12 columns">
+                    <h2>Benutzerangaben ändern</h2>
                 </div>
             </div>
             <!--Benutzerinformationen-->
             <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2">
                 <li>
                     <form action="#" method="post" enctype="multipart/form-data">
-                        <img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+                        <img src="img/profilbild.svg" width="150" height="150" style="margin:0px auto;display:block">
                         <input name="Datei" type="file" accept="image/*" />
                         <a href="#" class="button radius tiny">Hochladen</a>
                     </form>
