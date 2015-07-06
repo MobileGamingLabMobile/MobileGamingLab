@@ -217,7 +217,7 @@ App.controller("gameInfoController", function ($scope, $http) {
 				if (subscribed === false)
 				{
 					$button = $('<div class="small-12 small-centered columns "></div>');
-					$content = $('<a id="sbutton" class="button radius small expand">Abonnieren</a>');
+					$content = $('<a id="sbutton" class="button radius tiny expand">Abonnieren</a>');
 					$button.append($content);
 					$('#button').append($button);
 					$("#sbutton").on('click', function(){
@@ -228,10 +228,10 @@ App.controller("gameInfoController", function ($scope, $http) {
 					});
 				}
 				else {
-					$button = $('<div class="small-12 small-centered columns "></div>');
-					$content = $('<a id="unbutton" class="button radius small expand">Deabonnieren</a>');
-					$button.append($content);
-					$content2 = $('<a id="playbutton" class="button radius small expand">Spielen</a>');
+					$button = $('<div class="small-12 columns centered"></div>');
+					$content1 = $('<a id="unbutton" class="button radius tiny right">Deabonnieren</a>');
+					$button.append($content1);
+					$content2 = $('<a id="playbutton" class="button radius tiny left">Spielen</a>');
 					$button.append($content2);
 					$('#button').append($button);
 					$("#playbutton").on('click', function(){
