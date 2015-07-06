@@ -1,32 +1,18 @@
 <div class="wrapper" ng-controller="profileController
             as ctrProfile">
     <nav class="top-bar" data-topbar role="navigation">
-        <div class="small-3 columns">
+        <div class="small-3 columns left">
             <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
         </div>
-        <div class="small-3 columns">
-            <img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block">
+        <div class="small-3 columns right">
+            <a ng-click="logout()" ng-show="userID"><img src="img/logout.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
         </div>
-        <div class="small-3 columns">
-            <img src="img/editor-icon.svg" width="40" height="40" style="margin:3px auto;display:block">
-        </div>
-        <div class="small-3 columns">
-            <img src="img/logout.svg" width="40" height="40" style="margin:3px auto;display:block">
+        <div class="small-3 columns right">
+            <a href="#gameselection"><img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
         </div>
     </nav>
     <header ng-init="ctrProfile.loaduser()">
         <div class="panel" >
-            <div class="row">
-                <div class="small-4 columns">
-                    <a href="#gameselection" class="button radius tiny expand">Spieleauswahl</a>
-                </div>
-                <div class="small-5 columns">
-                    <h3>{{users.profile.name}}</h3>
-                </div>
-                <div class="small-3 columns">
-                    <a class="button radius tiny expand" ng-click="logout()" ng-show="userID">Logout</a>
-                </div>
-            </div>
             <div data-alert class="alert-box alert" ng-show="error" >
                 {{message}}
             </div>
@@ -37,12 +23,12 @@
                 </div>
                 <div class="small-7 columns">
                     <p></p>
+                    <h3>{{users.profile.name}}</h3>
                     {{users.profile.profession}} <br>
                     {{users.profile.country}} <br>
                     {{users.profile.city}}
                 </div>
             </div>
-            <br>
             <div class="row">
                 <div class="center">
                     <a href="#changeProfile" class="button radius tiny expand" ng-show="userID">Profil bearbeiten</a>
@@ -68,6 +54,7 @@
                     </div>
                 </div>
             </div>
+            <a id="footer" href="#impressum">Impressum</a>
         </div>
     </header>
 </div>
