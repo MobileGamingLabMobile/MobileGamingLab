@@ -1,27 +1,20 @@
 <!-- show the panel for large up like desktops -->
 <div ng-controller="loginController as ctrlogin">
     <nav class="top-bar" data-topbar role="navigation">
-        <div class="small-3 columns">
+        <div class="small-3 columns left">
             <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
-        </div>
-        <div class="small-3 columns">
-            <img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block">
-        </div>
-        <div class="small-3 columns">
-            
-        </div>
-        <div class="small-3 columns">
-            
         </div>
     </nav>
 
     <!-- content panel for logging in, registration link und help link -->
     <div class="panel">
+		<p></p>
         <div class="row">
             <div class="large-12 large-centered columns">
-                <p style="text-align: center;"><font size="6"><b>Mobile Unicorn Gaming Lab!</b></font></p>
+                <h2><b>Mobile Gaming Lab</b></h2>
             </div>
         </div>
+		<br><br><br>
         <form name="loginform" data-abide novalidate>
             <!-- error login-->
             <div data-alert class="alert-box alert" ng-show="error" >
@@ -45,16 +38,17 @@
                 <input type="password" id="password-l" placeholder="Passwort" name="password" ng-model="password" required>
             </div>
             <p></p>
+			<br>
             <div class="row">
                 <!-- button for logging in -->
                 <a class="button left columns" ng-click="login()" ng-disabled="loginform.$invalid">Anmelden</a>
-                <div style="text-align: center;">oder</div>
+
                 <!-- button for register -->
-                <a href="#signup" class="button right columns">Registrieren</a>
+                <div style="text-align: left;">oder <a href="#signup">Registrieren</a></div>
             </div>
-            <a href="#impressum">Impressum</a>
+			<a id="footer" href="#impressum">Impressum</a>
         </form>
-    </div>
+	</div>
 </div>
 
 
