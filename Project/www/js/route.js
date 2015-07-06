@@ -46,9 +46,9 @@ App.config(function ($routeProvider) {
 				templateUrl: 'mTemplates/impressum.html',
 				controller: 'impressumController'
 			})
-			//.otherwise({
-			//	redirectTo: "/"
-			//});
+			.otherwise({
+				redirectTo: "/"
+			});
 	;
 });
 
