@@ -11,6 +11,7 @@ var OptionButton = function (properties, GI) {
         'id': 'optionButton',
         'text': properties.text
     });
+    this.$button.css('font-size', '75%');
 };
 
 OptionButton.prototype = new Button;

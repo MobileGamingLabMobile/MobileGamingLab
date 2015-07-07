@@ -5,6 +5,12 @@ var Container = function (properties, GI) {
     
     this.map = null;
     this.GI = GI;
+    this.buttons = {
+        helpButton: null,
+        taskButton: null,
+        optionButton: null,
+        itemButton: null
+    };
     
     this.setProperties(properties);
 };
@@ -70,21 +76,25 @@ Container.prototype.addButton = function (properties) {
         case('help'):
             $button = new HelpButton(properties);
             $button.appendTo(this.$container);
+            this.buttons.helpButton = $button;
             break;
         case('option'):
             $button = new OptionButton(properties, this.GI);
             $button.appendTo(this.$container);
             $button.css("width", "33.3%");
+            this.buttons.optionButton = $button;
             break;
         case('task'):
             $button = new TaskButton(properties, this.GI);
             $button.appendTo(this.$container);
             $button.css("width", "33.3%");
+            this.buttons.taskButton = $button;
             break;
         case('item'):
             $button = new ItemButton(properties, this.GI);
             $button.appendTo(this.$container);
             $button.css("width", "33.3%");
+            this.buttons.itemButton = $button;
             break;
     }
 };

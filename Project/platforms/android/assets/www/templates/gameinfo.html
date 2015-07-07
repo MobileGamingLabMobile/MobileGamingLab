@@ -1,54 +1,64 @@
 <div class="wrapper"  ng-controller="gameInfoController as gameinfo">
-	
-	<!--header and nav-->
-	<header>
-		<div class="panel">
-			<div class="row">
-				<div class="small-3 columns">
-					<a href="#selectGame" class="button radius tiny expand">zurück</a>
+	<div ng-init="gameinfo.loadgame()">
+		<!--header and nav-->
+		<header>
+			<div class="panel">
+				<div class="row">
+					<div class="small-3 columns">
+						<a href="#gameselection" class="button radius tiny expand">zurück</a>
+					</div>
+					<div class="small-6 columns">
+						<h3>{{game[0].metadata.name}}</h3>
+					</div>
+					<div class="small-3 columns">
+						<a class="button radius tiny expand" ng-click="gameinfo.profile()">Profil</a>
+					</div>
 				</div>
-				<div class="small-6 columns">
-					<h3>Unicorn</h3>
+				<div class="row">
+					<!-- images -->
+					<div class="small-block-grid-1">
+						<img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
+					</div>
 				</div>
-				<div class="small-3 columns">
-					<a href="#profile" class="button radius tiny expand">Profil</a>
+				</br>
+				<!--playbutton
+				es fehlt noch die funktion dass der user auch spielen kann wenn er sich auf einem mobile devices befinden (siehe gameinfo.subscribe())-->
+				<div class="row" ng-init="gameinfo.gamesubscribed()">
+					<div id="button" class="small-6 small-centered columns "></div>
 				</div>
 			</div>
-			<div class="row">
-				<!-- images -->
-				<div class="small-block-grid-1">
-					<img src="img/unicorn01.png" width="150" height="150" style="margin:0px auto;display:block">
-				</div>
-			</div>
-			</br>
-			<!--playbutton-->
-			<div class="row">
-				<div class="small-6 small-centered columns ">
-					<a href="#game" class="button radius small expand">spielen</a>
-				</div>
-			</div>
-		</div>
-	</header>
+		</header>
 
-	<!-- main -->
-	<div class="main">
-		<div class="panel">
-			<dl class="sub-nav">
-				<dd ng-class="{ active: gameinfo.isSelected(1)}">
-					<a href="#gameinfo" class="button radius" ng-click="gameinfo.selectTab(1)">Beschreibung</a>
-				</dd>
-				<dd ng-class="{ active: gameinfo.isSelected(2)}">
-					<a href="#gameinfo" class="button radius" ng-click="gameinfo.selectTab(2)">Bewertung</a>
-				</dd>
-			</dl>
-			<div class="panel" ng-show="gameinfo.isSelected(1)">
-				<h4>Beschreibung</h4>
-			</div>
-			<div class="panel" ng-show="gameinfo.isSelected(2)">
-				<h4>Bewertung</h4>
+		<!-- main -->
+		<div class="main">
+			<div class="panel">
+				<dl class="sub-nav">
+					<dd ng-class="{ active: gameinfo.isSelected(1)}">
+						<a class="button radius" ng-click="gameinfo.selectTab(1)">Beschreibung</a>
+					</dd>
+					<dd ng-class="{ active: gameinfo.isSelected(2)}">
+						<a class="button radius" ng-click="gameinfo.loadComments()">Kommentare</a>
+					</dd>
+				</dl>
+				<div class="panel" ng-show="gameinfo.isSelected(1)">
+					<div id="averageRating"></div>
+					<div>{{game[0].metadata.description}}</div>
+					<a href="#profile" class="button radius tiny">Autor</a>
+				</div>
+				<div class="panel" ng-show="gameinfo.isSelected(2)">
+					<div id="comments" class="panel" style="height:300px;line-height:3em;overflow:scroll;padding:5px;">	
+					</div>
+					<div class="panel">	
+						<form name="commentform" novalidate>
+							<div id="alert"></div>
+							<div id="setRating" ng-model="rating"></div>
+							<input type="text" name="comment" placeholder="Schreibe einen Kommentar" ng-model="comment"/>
+							<a class="button radius tiny " ng-click="gameinfo.submitComment()">speichern</a>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </div>
 
