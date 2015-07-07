@@ -20,7 +20,7 @@ Header.prototype.setProperties = function (properties) {
                 $('#quitbutton').on('click', function () {
                     //TODO: Disconnect socket
                     window.window.location.href = "#gameselection";
-                    that.GI.socket.disconnect();
+                    //that.GI.socket.disconnect();
                 });
                 break;
             case('background'):

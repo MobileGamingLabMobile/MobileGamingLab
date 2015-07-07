@@ -4,42 +4,51 @@ var App = angular.module('App', ['ngRoute']);
 
 // configure our routes
 App.config(function ($routeProvider) {
-    $routeProvider
+	$routeProvider
 
-        // route for the login page
-        .when('/', {
-            templateUrl: 'templates/login.html',
-            controller: 'loginController'
-        })
+			// route for the login page
+			.when('/', {
+				templateUrl: 'mTemplates/login.html',
+				controller: 'loginController'
+			})
 
-        .when('/gameselection/:token', {
-            templateUrl: 'templates/selectGame.html',
-            controller: 'selectGameController'
-        })
+			.when('/gameselection', {
+				templateUrl: 'mTemplates/selectGame.html',
+				controller: 'selectGameController'
+			})
 
-        .when('/gameinfo/:token', {
-            templateUrl: 'templates/gameinfo.html',
-            controller: 'gameInfoController'
-        })
+			.when('/gameinfo', {
+				templateUrl: 'mTemplates/gameinfo.html',
+				controller: 'gameInfoController'
+			})
 
-        .when('/game/:token', {
-            templateUrl: 'templates/game.html',
-            controller: 'gameController'
-        })
+			.when('/game', {
+				templateUrl: 'mTemplates/game.html',
+				controller: 'gameController'
+			})
 
-        .when('/profile/:token', {
-            templateUrl: 'templates/profile.html',
-            controller: 'profileController'
-        })
-        
-        .when('/changeProfile/:token', {
-            templateUrl: 'templates/changeProfile.html',
-			controller: 'changeProfileController'
-        })
+			.when('/profile', {
+				templateUrl: 'mTemplates/profile.html',
+				controller: 'profileController'
+			})
 
-        // route for the contact page
-        .when('/signup', {
-            templateUrl: 'templates/signup.html',
-            controller: 'signUpController'
-        });
+			.when('/changeProfile', {
+				templateUrl: 'mTemplates/changeProfile.html',
+				controller: 'changeProfileController'
+			})
+
+			// route for the contact page
+			.when('/signup', {
+				templateUrl: 'mTemplates/signup.html',
+				controller: 'signUpController'
+			})
+			.when('/impressum', {
+				templateUrl: 'mTemplates/impressum.html',
+				controller: 'impressumController'
+			})
+			.otherwise({
+				redirectTo: "/"
+			});
+	;
 });
+
