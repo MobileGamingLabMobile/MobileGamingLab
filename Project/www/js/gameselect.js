@@ -13,15 +13,12 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 
 	//$scope.token = $routeParams.token;
 	$scope.token = window.sessionStorage.getItem("token");
-	console.log($scope.token);
-
 
 	/**
 	 * loadAllgame gets a object from the server with all stored games, saved in $scope.allgames
 	 */
 	this.loadAllgame = function () {
 		$http.get("http://giv-mgl.uni-muenster.de:8080/games/published/?access_token=" + $scope.token).success(function (data) {
-			console.log(data);
 			if (data.success)
 			{
 				$scope.allgames = data.games;
@@ -75,7 +72,6 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 		// make the row clickable
 		$body.on("click", "tr", function () {
 			var index = table.row(this).index();
-			console.log(index);
 			window.sessionStorage.setItem("gameID", allgamesdata[index].id);
 			window.location.href = "#gameinfo";
 		});
