@@ -49,7 +49,7 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 		$hline.append($('<th></th>').html('Bewertung'));
 		$head.append($hline);
 		$table.append($head);
-		
+
 		// load needed data into an array and than into a row
 		var allgamesdata = [];
 		$.each(data, function (i, item) {
@@ -64,14 +64,20 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 			$bline.append($('<td></td>').html('<div id="' + tabid + allgamesdata[i].id + '"></div>'));
 			$body.append($bline);
 		});
-		
+
 		// draw the table
 		$table.append($body);
 		$('#' + tabid).html('');
 		$('#' + tabid).append($table);
-		var table = $table.DataTable();
+		var table = $table.DataTable({
+			"bLengthChange": false,
+			"bFilter": true,
+			"bInfo": false,
+			"bAutoWidth": false,
+			pagingType: "simple"
+		});
 		table.draw();
-		
+
 		// make the row clickable
 		$body.on("click", "tr", function () {
 			var index = table.row(this).index();
@@ -79,7 +85,7 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 			window.sessionStorage.setItem("gameID", allgamesdata[index].id);
 			window.location.href = "#gameinfo";
 		});
-		
+
 		// draw the rating stars
 		$.each(allgamesdata, function (i) {
 			$('#' + tabid + allgamesdata[i].id).rateYo({
