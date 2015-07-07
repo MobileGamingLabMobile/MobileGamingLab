@@ -3756,7 +3756,6 @@ h2 {
 
 h3 {
 	font-size: 1.375rem;
-	text-align: left;
 }
 
 h4 {
@@ -3772,7 +3771,8 @@ h4 {
 	font-size: 1.125rem; }
 
 h5 {
-	font-size: 1.125rem; }
+	font-size: 1.125rem;
+	text-align: left;}
 
 h6 {
 	font-size: 1rem; }
