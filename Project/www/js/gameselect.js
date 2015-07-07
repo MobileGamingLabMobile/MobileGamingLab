@@ -71,7 +71,16 @@ App.controller("selectGameController", function ($scope, $http, $routeParams) {
 			"bFilter": true,
 			"bInfo": false,
 			"bAutoWidth": false,
-			pagingType: "simple"
+			"pagingType": "simple_numbers",
+			"language": {
+				"infoEmpty": "Keine Spiele vorhanden",
+				"zeroRecords": "Keine Spiele gefunden",
+				"search": "Suche:",
+				"paginate": {
+					"next": ">",
+					"previous": "<"
+				}
+			}
 		});
 		table.draw();
 
