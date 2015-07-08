@@ -15,7 +15,7 @@ Header.prototype.setProperties = function (properties) {
     for (var prop in properties) {
         switch (prop) {
             case('gamename'):
-                $headline = $('<a class="button radius tiny left" id="quitbutton">Spiel beenden</a> <h1>' + properties[prop] + '</h1>');
+                $headline = $('<h2>' + properties[prop] + '</h2>');
                 $headline.appendTo(this.$container);
                 $('#quitbutton').on('click', function () {
                     //TODO: Disconnect socket

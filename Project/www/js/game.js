@@ -9,7 +9,7 @@ App.controller("gameController", function ($scope, $http, $routeParams) {
             header: {
                 gamename: name,
                 background: 'white',
-                height: 25,
+                height: 20,
                 elements: {
                     button1: {
                         type: "button",
