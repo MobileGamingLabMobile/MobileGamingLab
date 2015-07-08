@@ -1,0 +1,67 @@
+<div class="wrapper"  ng-controller="gameInfoController
+			as gameinfo">
+    <div ng-init="gameinfo.loadgame()">
+        <nav class="top-bar" data-topbar role="navigation">
+			<div class="small-3 columns left">
+				<img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
+			</div>
+			<div class="small-3 columns right">
+				<a href="#gameselection">
+					<img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block">
+				</a>
+			</div>
+			<div class="small-3 columns right">
+				<a ng-click="gameinfo.profile()">
+					<img src="img/profilbild.svg" width="45" height="45" style="margin:3px auto;display:block">
+				</a>
+			</div>
+		</nav>
+        <!--header-->
+		<div class="panel">
+			<div class="small-12 centered columns">
+				<br>
+				<h2>{{game[0].metadata.name}}</h2>
+				<br>
+			</div>
+			<!--playbutton-->
+			<div class="row" ng-init="gameinfo.gamesubscribed()">
+				<div id="button"></div>
+			</div>
+		</div>
+
+		<!-- main -->
+		<div class="main">
+			<div class="panel">
+				<dl class="sub-nav">
+					<dd ng-class="{ active: gameinfo.isSelected(1)}">
+						<a class="button radius" ng-click="gameinfo.selectTab(1)">Beschreibung</a>
+					</dd>
+					<dd ng-class="{ active: gameinfo.isSelected(2)}">
+						<a class="button radius" ng-click="gameinfo.loadComments()">Kommentare</a>
+					</dd>
+				</dl>
+				<div class="panel" ng-show="gameinfo.isSelected(1)">
+					<div id="averageRating"></div>
+					<br>
+					<div>{{game[0].metadata.description}}</div>
+					<br>
+					<a href="#profile" class="button radius tiny">Autor</a>
+				</div>
+				<div class="panel" ng-show="gameinfo.isSelected(2)">
+					<div id="comments" class="panel" style="max-height:300px;line-height:3em;overflow:scroll;padding:5px;">	
+					</div>
+					<div class="panel">	
+						<form name="commentform" novalidate>
+							<div id="alert"></div>
+							<div id="setRating" ng-model="rating"></div>
+							<input type="text" name="comment" placeholder="Schreibe einen Kommentar" ng-model="comment"/>
+							<a class="button radius tiny " ng-click="gameinfo.submitComment()">speichern</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

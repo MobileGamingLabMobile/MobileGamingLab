@@ -107,8 +107,6 @@ App.controller("profileController", function ($http, $scope) {
 	 * @param {string} tabid : id of the div in which the table should be initialised
 	 */
 	var initialiseTable = function (data, tabid) {
-		console.log(data);
-		console.log(tabid);
 		//initialise table
 		$table = $('<table class="display"></table>');
 		$head = $('<thead></thead>');
@@ -127,17 +125,31 @@ App.controller("profileController", function ($http, $scope) {
 				"rating": data[i].metadata.rating.toFixed(2)
 			};
 			//load table
-
 			$bline = $('<tr></tr>');
 			$bline.append($('<td></td>').html(allgamesdata[i].name));
 			$bline.append($('<td></td>').html('<div id="' + tabid + allgamesdata[i].id + '"></div>'));
 			$body.append($bline);
 		});
+		
 		$table.append($body);
 		$('#' + tabid).html('');
 		$('#' + tabid).append($table);
-		console.log($('#' + tabid).html());
-		var table = $table.DataTable();
+		var table = $table.DataTable({
+			"bLengthChange": false,
+			"bFilter": true,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"pagingType": "simple_numbers",
+			"language": {
+				"infoEmpty": "Keine Spiele vorhanden",
+				"zeroRecords": "Keine Spiele gefunden",
+				"search": "Suche:",
+				"paginate": {
+					"next": ">",
+					"previous": "<"
+				}
+			}
+		});
 		table.draw();
 		$body.on("click", "tr", function () {
 			var index = table.row(this).index();
