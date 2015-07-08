@@ -1,5 +1,5 @@
 var TaskButton = function (properties, GI) {
-    var _class = 'button round';
+    var _class = 'button radius';
     if (properties.align) {
         _class += ' ' + properties.align;
     }
