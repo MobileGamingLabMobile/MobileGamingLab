@@ -1,5 +1,5 @@
 var HelpButton = function (properties) {
-    var _class = 'button round';
+    var _class = 'button radius tiny ';
     if (properties.align) {
         _class += ' ' + properties.align;
     }
@@ -7,7 +7,7 @@ var HelpButton = function (properties) {
     this.$button = $('<a/>', {
         'class': _class,
         'id': 'helpButton',
-        'text': '?'
+        'text': 'Hilfe'
     });
 };
 
