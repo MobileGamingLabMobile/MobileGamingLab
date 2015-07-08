@@ -40,10 +40,14 @@
             <div class="main" ng-init="ctrProfile.loadSgame()">
                 <div class="panel">
                     <dl class="sub-nav">
-                        <dd ng-class="{ active: ctrProfile.isSelected(1)}">
+                        <dd ng-class="{
+									active: ctrProfile.isSelected(1)
+								}">
                             <a class="button radius" ng-click="ctrProfile.loadSgame()">Abonnements</a>
                         </dd>
-                        <dd ng-class="{ active: ctrProfile.isSelected(2)}">
+                        <dd ng-class="{
+									active: ctrProfile.isSelected(2)
+								}">
                             <a class="button radius" ng-click="ctrProfile.loadOgame()">Erstellt</a>
                         </dd>
                     </dl>
