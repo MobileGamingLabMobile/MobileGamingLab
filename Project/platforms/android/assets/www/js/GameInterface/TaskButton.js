@@ -1,5 +1,5 @@
 var TaskButton = function (properties, GI) {
-    var _class = 'button round';
+    var _class = 'button radius';
     if (properties.align) {
         _class += ' ' + properties.align;
     }
@@ -100,6 +100,10 @@ TaskButton.prototype.loadPopup = function () {
                         $('#currentTaskLabel').text(that.GI.quests[id].data.title);
                         that.GI.quests[id].clicked = false;
                         that.GI.quests[id].data.started = true;
+                        that.GI.socket.emit("Quest", {
+                            operation: "active",
+                            quest: id
+                        });
                         $('#popup').foundation('reveal', 'close');
                     }
 

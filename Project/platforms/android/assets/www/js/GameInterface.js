@@ -1,5 +1,5 @@
 //GameInterface Class
-var GameInterface = function (properties, data) {
+var GameInterface = function (properties, data, token, gameSession, popup) {
     this.data = data;
     this.header = null;
     this.body = null;
@@ -8,16 +8,24 @@ var GameInterface = function (properties, data) {
     this.inventarItems = [];
     this.unreadQuests = 0;
     this.socket = null;
+    this.gameSession = gameSession;
+    this.token = token;
+    this.popup = popup;
 
     this.initialize(properties.header, properties.body, properties.footer);
 };
 
 GameInterface.prototype.initialize = function (_header, _body, _footer) {
+    //init socket
+    this.socket = io.connect("http://giv-mgl.uni-muenster.de:3030");
+    this.socket.emit('authenticate', {access_token: this.token, gameSession: this.gameSession});
+
+    //load elements
     this.header = new Header(_header, this);
     this.body = new Container(_body, this);
     this.footer = new Container(_footer, this);
-    
-    
+
+    //load data
     this.loadInitialData();
     this.loadData();
 };
@@ -25,7 +33,6 @@ GameInterface.prototype.initialize = function (_header, _body, _footer) {
 GameInterface.prototype.loadInitialData = function () {
     //Quests
     var that = this;
-
     //Dummy data
     this.data.finishedQuests.push({
         _id: 123312,
@@ -36,15 +43,16 @@ GameInterface.prototype.loadInitialData = function () {
         },
         started: false
     });
-    
+
     $.each(that.data.availableQuests, function (index) {
         var quest = that.data.availableQuests[index];
+        console.log(quest);
         that.quests[quest._id] = {
             clicked: false,
             finished: false,
             data: quest
         };
-        that.unreadQuests ++;
+        that.unreadQuests++;
     });
     $.each(that.data.finishedQuests, function (index) {
         var quest = that.data.finishedQuests[index];
@@ -53,71 +61,74 @@ GameInterface.prototype.loadInitialData = function () {
             finished: true,
             data: quest
         };
-        that.unreadQuests ++;
+        that.unreadQuests++;
     });
     this.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
-    
+
     this.getPosition();
-    this.body.map.drawMapItems();
-    //$.each(this.data.availableQuests, function (index) {
-       //console.log(that.data.availableQuests[index]);
-    //});
-    //$.each(this.data.finishedQuests, function (index) {
-       //console.log(that.data.availableQuests[index]);
-    //});
-    
 };
 
 GameInterface.prototype.getPosition = function () {
     var GI = this;
-    
-    GI.body.map.updatePlayerPos(51.969430, 7.595814);
-    
+    //initial position
+    //GI.body.map.updatePlayerPos(51.969430, 7.595814);
+
     document.addEventListener('deviceready', function () {
-        console.log(GI);
-        //GI.body.map.addLocator();
-        
+        console.log("deviceready");
         var geolocationSuccess = function (position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;
+
             GI.body.map.updatePlayerPos(lat, lng);
-        }
+        };
+
         // onError Callback receives a PositionError object
         //
         function geolocationError(error) {
             console.log(error);
         }
-        var watchId = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError);
-        
+        ;
+
+        var getPos = function () {
+            navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError)
+        };
+
+        var sendPos = function () {
+            GI.socket.emit("Player", GI.body.map.playerPos);
+        };
+
+        window.setInterval(getPos, 500);
+        window.setInterval(sendPos, 5000);
+
+        //GI.body.map.addLocator();
+
+
+        //var watchId = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError);
+
+
+
+
     }, false);
 };
 
 GameInterface.prototype.loadData = function () {
     var that = this;
-    //this.socket = io.connect("http://giv-mgl.uni-muenster.de:3035"); 
-    /*
-    this.socket.on("Quest", function (data) {
-        if (that.quests[data.quest._id]) {
-            that.quests[data.quest._id].data = data;
-            console.log(data);
-        } else {
-            that.quests[data.quest._id] = {
-                data: data,
-                clicked: false
-            }
-            that.unreadQuests ++;
-            that.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
-        } 
-    });
-    this.socket.emit("addClient" , {
-        clientName: "Jonas"
-    });
-    
+
     this.socket.on("Player", function (data) {
         console.log(data);
     });
     this.socket.on("MapItem", function (data) {
-        console.log(data);
+        switch (data.operation) {
+            case("visible"):
+                that.body.map.addMapItem(data);
+                break;
+            case("add"):
+                that.body.map.addMapItem(data);
+                break;
+            case("remve"):
+                that.body.map.removeMapItem(data);
+                break;
+        }
     });
     this.socket.on("InventarItem", function (data) {
         console.log(data);
@@ -131,18 +142,13 @@ GameInterface.prototype.loadData = function () {
                 that.quests[data[index].ID] = {
                     data: data[index],
                     clicked: false
-                };   
-                that.unreadQuests ++;
+                };
+                that.unreadQuests++;
                 that.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
-            } 
+            }
         });
     });
     this.socket.on("QuestEvent", function (data) {
-        console.log(data);
+        that.popup.questEvent(data);
     });
-    
-    this.socket.emit("Quest", {
-        operation: "active",
-        id: "5589372dc3c9618a348075ee"
-    });*/
 };

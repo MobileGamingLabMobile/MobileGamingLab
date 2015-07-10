@@ -18,12 +18,24 @@
             "AndroidManifest.xml": {
                 "parents": {
                     "/manifest": [],
-                    "/*": []
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
     },
     "installed_plugins": {
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.coolappz.Project"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.coolappz.Project"
         }
