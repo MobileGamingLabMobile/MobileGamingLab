@@ -230,15 +230,9 @@ App.controller("gameInfoController", function ($scope, $http) {
 				}
 				else {
 					$button = $('<div class="small-12 columns centered"></div>');
-					$content1 = $('<a id="unbutton" class="button radius tiny right">Deabonnieren</a>');
+					$content1 = $('<a id="unbutton" class="button radius tiny expand">Deabonnieren</a>');
 					$button.append($content1);
-					$content2 = $('<a id="playbutton" class="button radius tiny left">Spielen</a>');
-					$button.append($content2);
 					$('#button').append($button);
-					$("#playbutton").on('click', function(){
-						console.log('play');
-						play();
-					});
 					$("#unbutton").on('click', function(){
 						console.log('unsubscribe');
 						unsubscribe();
