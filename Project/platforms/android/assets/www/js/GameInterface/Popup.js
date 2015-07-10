@@ -19,7 +19,7 @@ Popup.prototype.clear = function () {
 
 Popup.prototype.selectRole = function (data) {
     var that = this;
-    $('#popupcontent').append("Bitte wähle eine Rolle aus:<br><br>");
+    $('#popupcontent').append("Bitte w&auml;hle eine Rolle aus:<br><br>");
     $.each(data, function (index) {
         var role = data[index];
         var $button = $('<a/>', {
@@ -38,5 +38,6 @@ Popup.prototype.selectRole = function (data) {
 };
 
 Popup.prototype.questEvent = function (data) {
-
+    $('#popupcontent').append("<div>" + data.title + "</div>");
+    $('#popupcontent').append(data.sequences.html);
 };

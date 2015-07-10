@@ -21,4 +21,13 @@ App.controller("impressumController", function ($http, $scope, $routeParams) {
 	this.showLegend = function(){
 		this.tab = 3;
 	};
+        
+        
+	/**
+	 * loads the own profile with setting userID to null
+	 */
+	this.profile = function () {
+		window.sessionStorage.setItem("userID", null);
+		window.location.href = "#profile";
+	};
 });

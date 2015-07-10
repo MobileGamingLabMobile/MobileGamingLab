@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {type} container
+ * @returns {Map}
+ */
 var Map = function (container) {
     this.$map = $('<div/>', {
         'class': 'map',
@@ -14,23 +19,14 @@ var Map = function (container) {
         }
     });
     this.markers = new L.layerGroup();
-
+    
+    //This is the position of the Player
     this.playerPos = {x: null, y: null};
     this.playerMarker = null;
 
     this.mapItemsMarker = [];
 
-    this.mapItems = [{
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [7.613819, 51.967345]
-            },
-            "properties": {
-                "name": "Blaue Lagune",
-                "id": 123123123
-            }
-        }];
+    this.mapItems = [];
 
     this.dots = {
         red: new this.LeafletIcon({iconUrl: 'img/punktRot.png'}),
@@ -75,9 +71,27 @@ Map.prototype.addMarker = function (lat, lng) {
     this.markers.addLayer(marker);
 };
 
-Map.prototype.addMapItem = function (lat, lng, icon) {
-
+Map.prototype.testPosition = function (x1, y1, x2, y2) {
+    var buffer = 0.00001;
+    if (x1 < x2 + buffer && x2 > x2 - buffer && y1 < y2 + buffer && y1 > y2 - buffer) {
+        return true;
+    } else {
+        return false;
+    }
 };
+
+Map.prototype.addMapItem = function (data) {
+    this.mapItems[data.id] = this.getMapItem(data.position);
+    this._map.add(this.mapItems[data.id]);
+};
+
+Map.prototype.removeMapItem = function (data) {
+    try {
+        this._map.remove(this.mapItems[data.id]);
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 Map.prototype.addLocator = function () {
     var that = this;
@@ -91,7 +105,7 @@ Map.prototype.addLocator = function () {
     };
     locateButton.addTo(this._map);
     $('#locate').on('click', function () {
-        that.zoomTo(that.playerPos.x, that.playerPos.y);
+        that._map.panTo(new L.LatLng(that.playerPos.x, that.playerPos.y));
     });
 };
 
@@ -104,7 +118,7 @@ Map.prototype.updatePlayerPos = function (x, y) {
 Map.prototype.drawPlayer = function () {
     var greenIcon = L.icon({
         iconUrl: 'img/officer-icon.png',
-        iconSize:     [40, 40]
+        iconSize: [40, 40]
     });
     if (!this.playerMarker) {
         this.playerMarker = L.marker(L.latLng(this.playerPos.x, this.playerPos.y), {icon: greenIcon}).addTo(this._map);
@@ -113,26 +127,23 @@ Map.prototype.drawPlayer = function () {
     }
 };
 
-Map.prototype.drawMapItems = function () {
+Map.prototype.getMapItem = function (id) {
     var that = this;
-    $.each(this.mapItems, function (index) {
-        var item = that.mapItems[index];
-        console.log(item);
+    var item = that.mapItems[id];
 
-        var geojsonMarkerOptions = {
-            radius: 8,
-            fillColor: "#ff7800",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8
-        };
+    var geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
 
-        L.geoJson(item, {
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, geojsonMarkerOptions);
-            }
-        }).addTo(that._map);
+    return L.geoJson(item, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, geojsonMarkerOptions);
+        }
     });
 };
 
