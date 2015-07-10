@@ -1,13 +1,22 @@
 <div class="wrapper">
-    <div class="panel" ng-controller="selectGameController as gameselect">
-        <div class="row">
-            <div class="small-3 columns left">
-                <a href="#impressum" class="button radius tiny expand">Impressum</a>
-            </div>
-            <div class="small-3 columns right">
-                <a href="#profile" class="button radius tiny expand">Profil</a>
-            </div>
-        </div>
+    <div ng-controller="selectGameController as gameselect">
+		<!-- nav bar -->
+		<nav class="top-bar" data-topbar role="navigation">
+			<div class="large-2 columns left">
+				<img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
+			</div>
+			<div class="large-2 columns right">
+				<a ng-click="gameselect.profile()">
+					<img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block">
+				</a>
+			</div>
+			<div class="large-2 columns right">
+				<a > <!-- add the link to the editor -->
+					<img src="img/editor_icon.svg" width="40" height="40" style="margin:3px auto;display:block">
+				</a>
+			</div>
+		</nav>
+		<!-- content -->
         <div class="panel" ng-init="gameselect.loadAllgame()">
             <dl class="sub-nav">
                 <dd ng-class="{active: gameselect.isSelected(3)}">
@@ -30,5 +39,6 @@
             <div id="tab02" class="panel ng-hide" ng-show="gameselect.isSelected(2)">
             </div>
         </div>
+		<a href="#impressum">Hilfe</a>
     </div>
 </div>
