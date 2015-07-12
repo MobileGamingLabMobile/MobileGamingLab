@@ -39,7 +39,7 @@ App.config(function ($routeProvider) {
 
 			// route for the contact page
 			.when('/signup', {
-				templateUrl: 'templates/signup.html',
+				templateUrl: 'templates/signUp.html',
 				controller: 'signUpController'
 			})
 			.when('/impressum', {
