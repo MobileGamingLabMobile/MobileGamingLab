@@ -18,7 +18,7 @@ var GameInterface = function (properties, data, token, gameSession, popup) {
 GameInterface.prototype.initialize = function (_header, _body, _footer) {
     //init socket
     this.socket = io.connect("http://giv-mgl.uni-muenster.de:3030");
-    this.socket.emit('authenticate', {access_token: this.token, gameSession: this.gameSession});
+    this.socket.emit('authenticate', {access_token: this.token, gameSessionID: this.gameSession});
 
     //load elements
     this.header = new Header(_header, this);
@@ -33,16 +33,6 @@ GameInterface.prototype.initialize = function (_header, _body, _footer) {
 GameInterface.prototype.loadInitialData = function () {
     //Quests
     var that = this;
-    //Dummy data
-    this.data.finishedQuests.push({
-        _id: 123312,
-        title: "nur ein test",
-        description: {
-            html: "nochmal Hallo",
-            name: "Hallo"
-        },
-        started: false
-    });
 
     $.each(that.data.availableQuests, function (index) {
         var quest = that.data.availableQuests[index];
@@ -64,21 +54,15 @@ GameInterface.prototype.loadInitialData = function () {
         that.unreadQuests++;
     });
     this.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
-
-    this.getPosition();
 };
 
-GameInterface.prototype.getPosition = function () {
+GameInterface.prototype.start = function () {
     var GI = this;
-    //initial position
-    //GI.body.map.updatePlayerPos(51.969430, 7.595814);
-
     document.addEventListener('deviceready', function () {
         console.log("deviceready");
         var geolocationSuccess = function (position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;
-
             GI.body.map.updatePlayerPos(lat, lng);
         };
 
@@ -89,19 +73,20 @@ GameInterface.prototype.getPosition = function () {
         }
         ;
 
+        //GI.body.map.addLocator();
+
         var getPos = function () {
-            navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError)
+            navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, { enableHighAccuracy: true })
         };
 
         var sendPos = function () {
-            GI.socket.emit("Player", GI.body.map.playerPos);
+            if (GI.body.map.playerPos.x && GI.body.map.playerPos.y) {
+                GI.socket.emit("Player", GI.body.map.playerPos);
+            }
         };
 
         window.setInterval(getPos, 500);
         window.setInterval(sendPos, 5000);
-
-        //GI.body.map.addLocator();
-
 
         //var watchId = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError);
 
@@ -109,6 +94,7 @@ GameInterface.prototype.getPosition = function () {
 
 
     }, false);
+
 };
 
 GameInterface.prototype.loadData = function () {
@@ -118,15 +104,16 @@ GameInterface.prototype.loadData = function () {
         console.log(data);
     });
     this.socket.on("MapItem", function (data) {
+        console.log(data);
         switch (data.operation) {
             case("visible"):
-                that.body.map.addMapItem(data);
+                that.body.map.addMapItem(data.item);
                 break;
             case("add"):
-                that.body.map.addMapItem(data);
+                that.body.map.addMapItem(data.item);
                 break;
             case("remve"):
-                that.body.map.removeMapItem(data);
+                that.body.map.removeMapItem(data.item);
                 break;
         }
     });
@@ -149,6 +136,7 @@ GameInterface.prototype.loadData = function () {
         });
     });
     this.socket.on("QuestEvent", function (data) {
+        console.log(data);
         that.popup.questEvent(data);
     });
 };

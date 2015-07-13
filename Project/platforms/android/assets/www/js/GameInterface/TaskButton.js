@@ -104,6 +104,7 @@ TaskButton.prototype.loadPopup = function () {
                             operation: "active",
                             quest: id
                         });
+                        that.GI.start();
                         $('#popup').foundation('reveal', 'close');
                     }
 

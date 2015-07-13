@@ -82,7 +82,7 @@ Map.prototype.testPosition = function (x1, y1, x2, y2) {
 
 Map.prototype.addMapItem = function (data) {
     this.mapItems[data.id] = this.getMapItem(data.position);
-    this._map.add(this.mapItems[data.id]);
+    this.mapItems[data.id].addTo(this._map);
 };
 
 Map.prototype.removeMapItem = function (data) {
@@ -110,8 +110,9 @@ Map.prototype.addLocator = function () {
 };
 
 Map.prototype.updatePlayerPos = function (x, y) {
-    this.playerPos.x = x;
-    this.playerPos.y = y;
+    //Switch because database and leaflet need them the other way round
+    this.playerPos.x = y;
+    this.playerPos.y = x;
     this.drawPlayer();
 };
 
@@ -120,16 +121,26 @@ Map.prototype.drawPlayer = function () {
         iconUrl: 'img/officer-icon.png',
         iconSize: [40, 40]
     });
+    //Switch because database and leaflet need them the other way round
     if (!this.playerMarker) {
-        this.playerMarker = L.marker(L.latLng(this.playerPos.x, this.playerPos.y), {icon: greenIcon}).addTo(this._map);
+        this.playerMarker = L.marker(L.latLng(this.playerPos.y, this.playerPos.x), {icon: greenIcon}).addTo(this._map);
     } else {
-        this.playerMarker.setLatLng(L.latLng(this.playerPos.x, this.playerPos.y), {icon: greenIcon});
+        this.playerMarker.setLatLng(L.latLng(this.playerPos.y, this.playerPos.x), {icon: greenIcon});
     }
 };
 
-Map.prototype.getMapItem = function (id) {
+Map.prototype.getMapItem = function (pos) {
     var that = this;
-    var item = that.mapItems[id];
+    var item = {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": pos
+        },
+        "properties": {
+            "name": "Map Item"
+        }
+    }
 
     var geojsonMarkerOptions = {
         radius: 8,
