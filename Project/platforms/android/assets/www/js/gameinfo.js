@@ -106,6 +106,7 @@ App.controller("gameInfoController", function ($scope, $http) {
 	//star rating for making a comment
 	$("#setRating").rateYo({
 		precision: 2,
+		starWidth: "30px",
 		onSet: function (rating) {
 			$scope.rating = rating;
 			console.log($scope.rating);

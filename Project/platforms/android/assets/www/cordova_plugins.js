@@ -9,6 +9,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "cordova-plugin-geolocation": "1.0.2-dev",
     "cordova-plugin-whitelist": "1.0.0"
 }
 // BOTTOM OF METADATA

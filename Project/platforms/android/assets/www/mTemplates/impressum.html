@@ -1,12 +1,15 @@
 <!-- saved from url=(0022)http://internet.e-mail -->
 <div class="wrapper" ng-controller="impressumController
-            as impressum">
+			as impressum">
     <nav class="top-bar" data-topbar role="navigation">
         <div class="small-3 columns left">
             <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
         </div>
         <div class="small-3 columns right">
-            <a href="#profile"><img src="img/profilbild.svg" width="45" height="45" style="margin:0px auto;display:block"></a>
+            <a ng-click="impressum.profile()"><img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
+        </div>
+        <div class="small-3 columns right">
+            <a href="#gameselection"><img src="img/gameselect_icon.svg" width="45" height="45" style="margin:0px auto;display:block"></a>
         </div>
     </nav>
     <header>
@@ -28,36 +31,40 @@
             <div class="panel" ng-show="impressum.isSelected(1)">
                 <h2>FAQ</h2>
                 <br>
-                <h4>1. Wie kann ich ein Spiel spielen?</h4>
+                <h5>1. Wie kann ich ein Spiel spielen?</h5>
                 <p>Nachdem Sie sich eingeloggt haben, steht ihnen eine Auswahl an verfügbaren spielen zur Verfügung. Tippen Sie auf das Spiel, dass sie gerne spielen möchten. Tippen Sie nun auf 'Spielen', um das Spiel zu starten.</p>
                 <br>
-                <h4>2. Wie kann ich mein Profil bearbeiten / löschen?</h4>
+                <h5>2. Wie kann ich mein Profil bearbeiten / löschen?</h5>
                 <p>Auf der eigenen Profilseite wird ein 'Profil bearbeiten'-Button angeboten. Hier ist es sowohl möglich die personenbezogenen Daten, als auch das persönliche Passwort zu ändern. Eine Löschung des Accounts ist nicht möglich. Warum auch?</p>
                 <br>
-                <h4>3. Werden meine Daten an Dritte weitergeleitet?</h4>
+                <h5>3. Werden meine Daten an Dritte weitergeleitet?</h5>
                 <p>Nein! Alle persönlichen Daten werden sehr vertraulich auf Servern, deren Standort in Deutschland ist, behandelt.</p>
                 <br>
-                <h4>4. Wie kann ich Spiele Abbonieren / Kündigen?</h4>
+                <h5>4. Wie kann ich Spiele Abbonieren / Kündigen?</h5>
                 <p>Auf der Spieleauswahlseite sind alle verfügbaren Spiele aufgelistet. Beim tippen auf ein Spiel öffnet sich die Spieleinfo Seite zu dem jeweiligen Spiel. Dort kann ein Spiel abboniert, sowie gekündigt werden.</p>
                 <br>
-                <h4>5. Wie kann ich Spiele bewerten?</h4>
+                <h5>5. Wie kann ich Spiele bewerten?</h5>
                 <p>Wenn ein Spiel abboniert wurde, kann auf der Spieleinfo Seite unter Kommentare eine Bewertung, sowie ein Kommentar zu diesem Spiel abgegeben werden.</p>
                 <br>
-                <h4>6. Kann ich mein Spiel pausieren und zu einem späteren Zeitpunkt weiterspielen?</h4>
+                <h5>6. Kann ich mein Spiel pausieren und zu einem späteren Zeitpunkt weiterspielen?</h5>
                 <p>Ja, dies ist möglich und geschieht automatisch.</p>
                 <br>
-                <h4>7. Wie kann ich eigene Spiele erstellen?</h4>
+                <h5>7. Wie kann ich eigene Spiele erstellen?</h5>
                 <p>Dies ist im Moment noch nicht möglich, da sich dies noch in der Planungsphase befindet. In einem späteren Update dieser Applikation wird dies möglich sein.</p>
                 <br>
-                <h4>8. Kann ich mit anderen Spielern kommunizieren?</h4>
+                <h5>8. Kann ich mit anderen Spielern kommunizieren?</h5>
                 <p>Dies ist im Moment noch nicht möglich, da sich dies noch in der Planungsphase befindet. In einem späteren Update dieser Applikation wird dies möglich sein.</p>
+                <br>
+                <h5>9. Wie kann ich dieses Projekt auf mein Smartphone installieren?</h5>
+                <p>Zum Download dieses Programmms (bisher nur für Android verfügbar) klicke <a href="https://drive.google.com/open?id=0BwX4FGctiytgbnNSN0EyTlF5VUE" download="MGL fuer Android">hier</a>.</p>
+            
             </div>
             <!--About us-->
             <div class="panel" ng-show="impressum.isSelected(2)">
                 <h2>Über uns</h2>
                 <br>
                 <p>
-                    Dieses Standortbezogene Spiel wurde als Studienprojekt von Jana, Florian, Jens, Milan, Clara, Jonas und Maximilian an der Westfälische Wilhelms-Universität Münster erstellt und wird seit 2015 von uns unterstützt und weiterentwickelt.<br>
+                    Dieses Standortbezogene Spiel wurde als Studienprojekt von Jana, Florian, Jens, Marco, Milan, Clara, Jonas und Maximilian an der Westfälische Wilhelms-Universität Münster erstellt und wird seit 2015 von uns unterstützt und weiterentwickelt.<br>
                     Diese Applikation wurde mitunter den Bibliotheken jQuery, foundation 5, Leaflet und Angular erstellt und basiert größtenteils unter der MIT Lizenz. Als Datenbank wurde MongoDB verwendet.<br>
                     Der Code zu unserem Studienprojekt befindet sich auf github unter den folgenden Links:<br>
                     <a href="https://github.com/MobileGamingLabMobile/MobileGamingLab"> https://github.com/MobileGamingLabMobile/MobileGamingLab</a><br>
@@ -70,7 +77,7 @@
                         <img src="img/unicorn01.png" width="200" height="200">
                     </div>
                     <div class="small-9 columns">
-                        <h3>Unser Logo</h3>
+                        <h5>Unser Logo</h5>
                         <p>Dies ist unser Logo.</p>
                     </div>
                 </div>
@@ -79,9 +86,18 @@
                         <img src="img/editor_icon.svg" width="200" height="200">
                     </div>
                     <div class="small-9 columns">
-                        <h3>Der Editor</h3>
+                        <h5>Der Editor</h5>
                         <p>Hier geht es zu dem Editor, um eigene Spiele zu erstellen.</p>
                         <p class="authordiv">Hinweis: Dieser Button ist bei mobilen Versionen nicht verfügbar.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-3 columns">
+                        <img src="img/gameselect_icon.svg" width="200" height="200">
+                    </div>
+                    <div class="small-9 columns">
+                        <h5>Die Spieleauswahl</h5>
+                        <p>Über diesen Button kann zu der Spieleauswahl gelangt werden.</p>
                     </div>
                 </div>
                 <div class="row">
@@ -89,7 +105,7 @@
                         <img src="img/logout.svg" width="200" height="200">
                     </div>
                     <div class="small-9 columns">
-                        <h3>Logout</h3>
+                        <h5>Logout</h5>
                         <p>Über diesen Button ist es möglich, sich auszuloggen.</p>
                     </div>
                 </div>
@@ -98,7 +114,7 @@
                         <img src="img/profilbild.svg" width="200" height="200">
                     </div>
                     <div class="small-9 columns">
-                        <h3>Profilbild</h3>
+                        <h5>Profilbild</h5>
                         <p>Über diesen Button ist es möglich, auf die eigene Profilseite zu gelangen.</p>
                     </div>
                 </div>
