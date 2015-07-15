@@ -34,10 +34,10 @@
     },
     "installed_plugins": {
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.coolappz.Project"
+            "PACKAGE_NAME": "com.coolappz.MGL"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.coolappz.Project"
+            "PACKAGE_NAME": "com.coolappz.MGL"
         }
     },
     "dependent_plugins": {}

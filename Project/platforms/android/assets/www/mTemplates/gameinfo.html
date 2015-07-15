@@ -27,10 +27,6 @@
 			<div class="row" ng-init="gameinfo.gamesubscribed()">
 				<div id="button"></div>
 			</div>
-		</div>
-
-		<!-- main -->
-		<div class="main">
 			<div class="panel">
 				<dl class="sub-nav">
 					<dd ng-class="{ active: gameinfo.isSelected(1)}">
@@ -48,7 +44,7 @@
 					<a href="#profile" class="button radius tiny">Autor</a>
 				</div>
 				<div class="panel" ng-show="gameinfo.isSelected(2)">
-					<div id="comments" class="panel" style="max-height:300px;line-height:3em;overflow:scroll;padding:5px;">	
+					<div id="comments" class="panel" style="max-height:150px;line-height:3em;overflow:scroll;padding:5px;">	
 					</div>
 					<div class="panel">	
 						<form name="commentform" novalidate>
@@ -60,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<a id="footer" href="#impressum">Hilfe</a>
+			<a href="#impressum">Hilfe</a>
 		</div>
 	</div>
 </div>

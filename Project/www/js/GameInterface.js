@@ -28,6 +28,7 @@ GameInterface.prototype.initialize = function (_header, _body, _footer) {
     //load data
     this.loadInitialData();
     this.loadData();
+    this.getPosition();
 };
 
 GameInterface.prototype.loadInitialData = function () {
@@ -56,10 +57,11 @@ GameInterface.prototype.loadInitialData = function () {
     this.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
 };
 
-GameInterface.prototype.start = function () {
+GameInterface.prototype.getPosition = function () {
     var GI = this;
     document.addEventListener('deviceready', function () {
         console.log("deviceready");
+        
         var geolocationSuccess = function (position) {
             lat = position.coords.latitude;
             lng = position.coords.longitude;
@@ -73,28 +75,28 @@ GameInterface.prototype.start = function () {
         }
         ;
 
-        //GI.body.map.addLocator();
-
         var getPos = function () {
-            navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, { enableHighAccuracy: true })
-        };
-
-        var sendPos = function () {
-            if (GI.body.map.playerPos.x && GI.body.map.playerPos.y) {
-                GI.socket.emit("Player", GI.body.map.playerPos);
-            }
+            navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, {enableHighAccuracy: true})
         };
 
         window.setInterval(getPos, 500);
-        window.setInterval(sendPos, 5000);
 
-        //var watchId = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError);
-
-
-
-
+        var watchId = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError);
+        console.log(watchId);
     }, false);
+};
 
+GameInterface.prototype.start = function () {
+    var GI = this;
+    var sendPos = function () {
+        console.log(GI.body.map.playerPos.x);
+        console.log(GI.body.map.playerPos.y);
+        if (GI.body.map.playerPos.x && GI.body.map.playerPos.y) {
+            GI.socket.emit("Player", GI.body.map.playerPos);
+        }
+    };
+
+    window.setInterval(sendPos, 5000);
 };
 
 GameInterface.prototype.loadData = function () {
@@ -121,22 +123,34 @@ GameInterface.prototype.loadData = function () {
         console.log(data);
     });
     this.socket.on("Quest", function (data) {
-        console.log(data);
-        $.each(data, function (index) {
-            if (that.quests[data[index].ID]) {
-                that.quests[data[index].ID].data = data[index];
-            } else {
-                that.quests[data[index].ID] = {
-                    data: data[index],
-                    clicked: false
-                };
-                that.unreadQuests++;
-                that.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
-            }
-        });
+        if (data.operation == 'finished') {
+            that.quests[data.quest].finished = true;
+            that.quests[data.quest].clicked = false;
+        }
+        if (data.operation == 'available') {
+            console.log(data);
+            var quest = data.quest;        
+            if (that.quests[quest._id]) {
+                    that.quests[quest._id].data = quest;
+                } else {
+                    that.quests[quest._id] = {
+                        data: quest,
+                        clicked: false,
+                        finished: false
+                    };
+                    that.unreadQuests++;
+                    that.footer.buttons.taskButton.addCount(that.unreadQuests, "update");
+                }
+        }
     });
     this.socket.on("QuestEvent", function (data) {
-        console.log(data);
-        that.popup.questEvent(data);
+        try {
+            console.log(that.popup);
+            that.popup.open();
+            that.popup.questEvent(data.content[0]);
+
+        } catch (e) {
+            console.log(e);
+        }
     });
 };
