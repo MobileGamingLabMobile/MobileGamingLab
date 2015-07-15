@@ -38,6 +38,5 @@ Popup.prototype.selectRole = function (data) {
 };
 
 Popup.prototype.questEvent = function (data) {
-    $('#popupcontent').append("<div>" + data.title + "</div>");
-    $('#popupcontent').append(data.sequences.html);
+    $('#popupcontent').append(data.html);
 };
