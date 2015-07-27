@@ -3,13 +3,16 @@
 		<!--header and nav-->
 		<nav class="top-bar" data-topbar role="navigation">
 			<div class="small-2 columns left">
+                            <!--Logo-->
 				<img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
 			</div>
 			<div class="small-2 columns right">
+                            <!--Select-Game-Button-->
 				<a href="#gameselection"><img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
 			</div>
 			<div class="large-2 columns right">
 				<a ng-click="gameinfo.profile()">
+                                    <!--Profil-Button-->
 					<img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block">
 				</a>
 			</div>
@@ -21,6 +24,7 @@
 				<div class="panel">
 					<div class="row">
 						<div class="large-12 columns centered">
+                                                    <!--Metadaten zum Spiel-->
 							<h3>{{game[0].metadata.name}}</h3>
 						</div>
 						<br>
@@ -40,6 +44,7 @@
 			<!-- main -->
 			<li class="large-7 columns">
 				<div class="panel">
+                                    <!--Tabs (Beschreibung, Kommentare)-->
 					<dl class="sub-nav">
 						<dd ng-class="{
 									active: gameinfo.isSelected(1)
@@ -72,6 +77,7 @@
 				</div>
 			</li>
 		</ul>
+                <!--Link for a little help-->
 		<a href="#impressum">Hilfe</a>
 		</div>
 	</div>

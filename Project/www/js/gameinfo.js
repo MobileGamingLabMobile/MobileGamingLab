@@ -171,7 +171,7 @@ App.controller("gameInfoController", function ($scope, $http) {
 	};
 	
 	/**
-	 * weiterleitung zum spiel
+	 * forwarding to the game
 	 */
 	var play = function(){
 		window.location.href = "#game";

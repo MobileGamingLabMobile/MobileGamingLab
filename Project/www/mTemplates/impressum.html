@@ -3,17 +3,21 @@
 			as impressum">
     <nav class="top-bar" data-topbar role="navigation">
         <div class="small-3 columns left">
+            <!--Logo-->
             <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
         </div>
         <div class="small-3 columns right">
+            <!--Profile-Button-->
             <a ng-click="impressum.profile()"><img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
         </div>
         <div class="small-3 columns right">
+            <!--Select-Game-Button-->
             <a href="#gameselection"><img src="img/gameselect_icon.svg" width="45" height="45" style="margin:0px auto;display:block"></a>
         </div>
     </nav>
     <header>
         <div class="panel">
+            <!--Tabs (FAQ, About Us, Legend)-->
             <div class="leftcontainer">
                 <dl class="sub-nav">
                     <dd ng-class="{ active: impressum.isSelected(1)}">
