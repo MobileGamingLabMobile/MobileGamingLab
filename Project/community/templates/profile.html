@@ -2,12 +2,15 @@
             as ctrProfile">
     <nav class="top-bar" data-topbar role="navigation">
         <div class="small-2 columns left">
+            <!--Logo-->
             <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
         </div>
         <div class="small-2 columns right">
+            <!--Logout-Button-->
             <a ng-click="logout()" ng-show="userID"><img src="img/logout.svg" width="35" height="35" style="margin:3px auto;display:block"></a>
         </div>
         <div class="small-2 columns right">
+            <!--SelectGame-Button-->
             <a href="#gameselection"><img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
         </div>
     </nav>
@@ -17,14 +20,16 @@
             <div data-alert class="alert-box alert" ng-show="error" >
                 {{message}}
             </div>
-            <!--Benutzerinformationen-->
+            <!--Userinformation-->
             <ul class="large-block-grid-2">
                 <li>
                     <ul class="large-block-grid-2">
                         <li>
+                            <!--Profilbild-->
                             <img src="img/profilbild.svg" width="150" height="150" style="margin:10px auto;display:block">
                         </li>
                         <li>
+                            <!--shows the personal attributes-->
                             <p><b>{{users.profile.name}}</b></p>
                             {{users.profile.profession}} <br>
                             {{users.profile.country}} <br>
@@ -38,6 +43,7 @@
                 <li>
                     <div class="main" ng-init="ctrProfile.loadSgame()">
                         <div class="panel">
+                            <!--Tabs (abo, create)-->
                             <dl class="sub-nav">
                                 <dd ng-class="{ active: ctrProfile.isSelected(1)}">
                                     <a class="button radius" ng-click="ctrProfile.loadSgame()">Abonnements</a>
@@ -56,6 +62,7 @@
                     </div>
                 </li>
             </ul>
+            <!--Link for a little help-->
            <a href="#impressum">Hilfe</a>
         </div>
     </header>

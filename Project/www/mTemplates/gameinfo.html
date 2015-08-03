@@ -3,15 +3,18 @@
     <div ng-init="gameinfo.loadgame()">
         <nav class="top-bar" data-topbar role="navigation">
 			<div class="small-3 columns left">
+                            <!--Logo-->
 				<img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
 			</div>
 			<div class="small-3 columns right">
 				<a ng-click="gameinfo.profile()">
+                                    <!--Profil-Button-->
 					<img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block">
 				</a>
 			</div>
 			<div class="small-3 columns right">
 				<a href="#gameselection">
+                                    <!--Select-Game-Button-->
 					<img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block">
 				</a>
 			</div>
@@ -19,6 +22,7 @@
         <!--header-->
 		<div class="panel">
 			<div class="small-12 centered columns">
+                            <!--Metadaten zum Spiel-->
 				<br>
 				<h2>{{game[0].metadata.name}}</h2>
 				<br>
@@ -28,6 +32,7 @@
 				<div id="button"></div>
 			</div>
 			<div class="panel">
+                            <!--Tabs (Beschreibung, Kommentare)-->
 				<dl class="sub-nav">
 					<dd ng-class="{ active: gameinfo.isSelected(1)}">
 						<a class="button radius" ng-click="gameinfo.selectTab(1)">Beschreibung</a>
@@ -56,6 +61,7 @@
 					</div>
 				</div>
 			</div>
+                        <!--Link for a little help-->
 			<a href="#impressum">Hilfe</a>
 		</div>
 	</div>

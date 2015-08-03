@@ -1,15 +1,19 @@
 <div class="wrapper"  ng-controller="changeProfileController">
 	<nav class="top-bar" data-topbar role="navigation">
         <div class="small-3 columns left">
+            <!--Logo-->
             <img src="img/unicorn01.png" width="60" height="60" style="margin:0px auto;display:block">
         </div>
         <div class="small-3 columns left">
+            <!--Logout-Button-->
             <a ng-click="logout()" ng-show="userID"><img src="img/logout.svg" width="35" height="35" style="margin:3px auto;display:block"></a>
         </div>
 		<div class="small-3 columns right">
+                    <!--Profil-Button-->
             <a href="#profile"><img src="img/profilbild.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
         </div>
         <div class="small-3 columns right">
+            <!--Select-Game-Button-->
             <a href="#gameselection"><img src="img/gameselect_icon.svg" width="40" height="40" style="margin:3px auto;display:block"></a>
         </div>
     </nav>
@@ -21,7 +25,7 @@
 		</div>
 		<br>
 		<br>
-		<!--Benutzerinformationen-->
+		<!--Userinformation-->
 		<ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2">
 			<!-- should be able to upload a user photo here, but not implemented from the serverside
 			<li>
@@ -33,6 +37,7 @@
 			</li>
 			-->
 			<li>
+                            <!--Pchange profile (Name, Profession, Land, City)-->
 				<form name="profileform" novalidate>
 					<div data-alert class="alert-box alert" ng-show="error" >
 						{{message}}
@@ -66,5 +71,6 @@
 			</li>
 		</ul>
 	</div>
+    <!--Link for a little help-->
 	<a id="footer" href="#impressum">Hilfe</a>
 </div>
